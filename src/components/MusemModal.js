@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, ScrollView, Image, StatusBar, Text, View } from 'react-native';
-import Colors from '../constants/Colors';
+import { TouchableOpacity, ScrollView, Image, Text, View } from 'react-native';
+import { Colors } from '../constants';
 import { fetchInfoMuseo } from '../constants/Api';
-import { GTSuper } from '../components/StyledText';
-import Icon from '../components/Icon';
+import { GTSuper } from './StyledText';
+import Icon from './Icon';
 import { useNavigation } from '@react-navigation/native';
 import Button from './Button';
 
@@ -17,9 +17,6 @@ const MusemModal = ({
     const [museoinfo, setInfo] = useState({});
     const [loading, setLoading] = React.useState(true);
     const [textShown, setText] = useState(-1)
-    /*
-    * used to change the StatusBar being on the Modal with background Green
-    */
     useEffect(() => {
         if (museo) {
             fetchInfoMuseo(museo.id).then(results => {
@@ -28,10 +25,6 @@ const MusemModal = ({
             });
         } else {
             setLoading(false);
-        }
-        StatusBar.setBarStyle('light-content', true);
-        return () => {
-            StatusBar.setBarStyle('dark-content', true);
         }
     }, []);
     const toggleNumberOfLines = index => {
@@ -87,7 +80,7 @@ const MusemModal = ({
                     marginHorizontal: 30
                 }}>
                     {museo && <Text style={{
-                        fontFamily: "gt-super-medium",
+                        fontFamily: "GTSuperDisplay-Medium",
                         fontSize: 30,
                         textAlign: "left",
                         maxWidth: 290

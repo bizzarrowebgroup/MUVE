@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar, View, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
+import { View, TouchableOpacity, ActivityIndicator, Image } from 'react-native';
 
 import Colors from '../constants/Colors';
 import { GTSuper, GilroyRegular } from '../components/StyledText';
@@ -210,15 +210,6 @@ const MuseiMapScreen = ({
     params,
     navigation
 }) => {
-    /*
-    * used to change the StatusBar being on the Modal with background Green
-    */
-    useEffect(() => {
-        StatusBar.setBarStyle('light-content', true);
-        return () => {
-            StatusBar.setBarStyle('dark-content', true);
-        }
-    }, []);
     let [musei, setMusei] = useState({});
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -286,7 +277,7 @@ const MuseiMapScreen = ({
                                         />
                                     </Svg>
                                 </View>
-                                <Callout tooltip={true} onPress={()=>handlePress(item)}>
+                                <Callout tooltip={true} onPress={() => handlePress(item)}>
                                     <Card params={item} isMap={true} />
                                 </Callout>
                             </MapView.Marker>

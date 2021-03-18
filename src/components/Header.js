@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
-import Colors from '../constants/Colors';
-import Icon from '../components/Icon';
+import { Colors } from '../constants';
+import Icon from './Icon';
 // import { BlurView } from 'expo-blur';
-import { GTSuper } from '../components/StyledText';
+import { GTSuper } from './StyledText';
 // import { useRoute } from '@react-navigation/native';
 
 const Header = ({
@@ -33,7 +33,7 @@ const Header = ({
             style={[styles.container]}>
             <GTSuper style={styles.headerText}>{title}</GTSuper>
             <TouchableOpacity onPress={navigate}>
-                <Icon color={Colors.grey} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} />
+                {/* <Icon color={Colors.grey} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} /> */}
             </TouchableOpacity>
         </View>
     )

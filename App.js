@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
-
-// import { MaterialCommunityIcons, Entypo, SimpleLineIcons } from '@expo/vector-icons';
+import { Platform, StyleSheet, View, Text } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
@@ -14,15 +12,13 @@ import { BottomTabNavigator, useLinking } from './src/navigation';
 import MuseiMapScreen from './src/screens/MuseiMapScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import { linking } from './src/navigation/useLinking';
 
 const Stack = createStackNavigator();
-const IS_PROD = false;
 
 const App = ({ }) => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-  // const [initialNavigationState, setInitialNavigationState] = useState();
   const containerRef = useRef();
-  // const { getInitialState } = useLinking(containerRef);
 
   useEffect(() => {
     loadResourcesAndDataAsync();
@@ -31,7 +27,6 @@ const App = ({ }) => {
   const loadResourcesAndDataAsync = async () => {
     try {
       // SplashScreen.preventAutoHide();
-      // setInitialNavigationState(await getInitialState());
     } catch (e) {
       console.warn(e);
     } finally {
@@ -45,12 +40,13 @@ const App = ({ }) => {
   } else {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer
           ref={containerRef}
-          // initialState={initialNavigationState}
+          linking={linking}
         >
-          <Stack.Navigator initialRouteName="Welcome">
+          <Stack.Navigator
+            initialRouteName="Welcome"
+          >
             <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
               headerShown: false,
               gestureEnabled: false,
@@ -81,7 +77,6 @@ const App = ({ }) => {
             }} />
           </Stack.Navigator>
         </NavigationContainer>
-        {IS_PROD && <Text style={{ fontSize: 8, left: 20, bottom: 15, fontWeight: "700", position: "absolute" }}>made with<Text style={{ fontSize: 10, }}> ❤ </Text>by bwg</Text>}
       </View>
     );
   }

@@ -21,14 +21,11 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName={INITIAL_ROUTE_NAME}
-      tabBarOptions={{
-        showLabel: false,
-        adaptive: true,
-        keyboardHidesTabBar: false,
-        tabStyle: {
+      screenOptions={{
+        tabBarAdaptive: false,
+        tabBarHideOnKeyboard: false,
+        tabBarStyle: {
           borderTopWidth: 0,
-        },
-        style: {
           paddingTop: isSmallDevice ? 0 : 20,
           paddingHorizontal: 50,
           // borderRadius: 20,
@@ -44,7 +41,9 @@ export default function BottomTabNavigator() {
           elevation: 24,
           borderTopWidth: 0,
         },
+        tabBarShowLabel: false,
         lazy: true,
+        headerShown: false
       }}
       tabBar={(props) => (
         <View
@@ -84,7 +83,7 @@ export default function BottomTabNavigator() {
         component={LinksScreen}
         options={{
           title: 'Settings',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="settings" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="cog" />,
         }}
       />
     </BottomTab.Navigator>

@@ -7,10 +7,8 @@ import {
     TabBar,
 } from 'react-native-tab-view';
 
-import Card from '../components/Card';
-import Header from '../components/Header';
-import Colors from '../constants/Colors';
-
+import { Card, Header } from '../components';
+import { Colors } from '../constants';
 import { fetchMusei } from '../constants/Api';
 import _ from "lodash";
 import { window } from '../constants/Layout';
@@ -21,22 +19,30 @@ const FirstRoute = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        fetchMusei().then(json => {
-            setLoading(false);
-            setMusei(json);
-        })
+        try {
+            fetchMusei().then(json => {
+                console.log("--json", json)
+                if (json) setMusei(json)
+            })
+        } catch (error) {
+            alert(error)
+            console.log("error")
+        }
+        setLoading(false);
     }, []);
     return (
         <View style={styles.container}>
-            {!loading && (<FlatList
-                data={musei}
-                showsVerticalScrollIndicator={false}
-                keyExtractor={item => String(item.id)} //tba string to number maybe?
-                renderItem={({ item }) => <Card params={item} colore={Colors.black} />}
-                style={styles.museoview}
-                scrollEventThrottle={100}
-                contentInsetAdjustmentBehavior="scrollableAxes"
-            />)}
+            {!loading && (
+                <FlatList
+                    data={musei}
+                    showsVerticalScrollIndicator={false}
+                    keyExtractor={item => String(item.id)} //tba string to number maybe?
+                    renderItem={({ item }) => <Card params={item} colore={Colors.black} />}
+                    style={styles.museoview}
+                    scrollEventThrottle={100}
+                    contentInsetAdjustmentBehavior="scrollableAxes"
+                />
+            )}
         </View>
     )
 };
@@ -149,7 +155,7 @@ const FifthRoute = () => {
                 data={musei}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={item => String(item.id)} //tba string to number maybe?
-                renderItem={({ item }) => <Card params={item} colore={Colors.secondblue}/>}
+                renderItem={({ item }) => <Card params={item} colore={Colors.secondblue} />}
                 style={styles.museoview}
                 contentInsetAdjustmentBehavior="scrollableAxes"
             />)}
@@ -183,7 +189,8 @@ const MuseiScreen = ({ navigation }) => {
         useEffect(() => {
             Animated.timing(marginLeftRef, {
                 toValue: tabWidth,
-                duration: 500
+                duration: 500,
+                useNativeDriver: false
             }).start()
         }, [tabWidth]);
         return (

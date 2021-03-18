@@ -12,12 +12,11 @@ import {
 } from 'react-native';
 
 import Icon from './Icon';
-import Colors from '../constants/Colors';
+import { Colors } from '../constants';
 import { searchMusei } from '../constants/Api';
-// import * as WebBrowser from 'expo-web-browser';
 
 const SearchBar = ({
-    params,
+    route,
     navigation,
 }) => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -42,7 +41,7 @@ const SearchBar = ({
         navigation.navigate('Modal', { params: item })
     }
     return (
-        <React.Fragment>
+        <>
             <View style={styles.container}>
                 {loading && (
                     <ActivityIndicator size="large" color={Colors.black} style={{ position: "absolute", top: 10, alignSelf: "center" }} />
@@ -113,11 +112,9 @@ const SearchBar = ({
                     </View>
                 </View>
             </Modal>
-        </React.Fragment>
+        </>
     )
 };
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -206,9 +203,5 @@ const styles = StyleSheet.create({
         minHeight: 50
     }
 })
-
-
-// left margin 35
-// right margin 30
 
 export default SearchBar;

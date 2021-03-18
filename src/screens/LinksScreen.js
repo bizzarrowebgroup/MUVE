@@ -1,13 +1,12 @@
-// import { Ionicons } from '@expo/vector-icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { RectButton, TouchableOpacity } from 'react-native-gesture-handler';
 import { GilroyBold, GilroyRegular } from '../components/StyledText';
-import Colors from '../constants/Colors';
-import Icon from '../components/Icon';
+import { Colors } from '../constants';
+import { Icon } from '../components';
 
-// import * as WebBrowser from 'expo-web-browser';
-//WebBrowser.openBrowserAsync('https://docs.expo.io')
 const OptionButton = ({ icon, label, onPress, iconColor }) => {
   return (
     <RectButton style={[styles.option]} onPress={onPress}>
@@ -42,7 +41,6 @@ const LinksScreen = ({
       <OptionButton
         icon="ios-time"
         label="I miei biglietti"
-        // onPress={() => }
         iconColor={Colors.rose}
       />
       <OptionButton

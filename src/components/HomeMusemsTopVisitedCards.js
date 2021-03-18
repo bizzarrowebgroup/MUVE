@@ -2,10 +2,10 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-import Icon from './Icon';
-import Colors from '../constants/Colors';
+import { Icon } from './Icon';
+import { Colors } from '../constants';
 import { GilroyBold, GilroyRegular } from './StyledText';
-import CardTopVisited from './CardTopVisited';
+import { CardTopVisited } from './CardTopVisited';
 
 import { fetchMusei } from '../constants/Api';
 

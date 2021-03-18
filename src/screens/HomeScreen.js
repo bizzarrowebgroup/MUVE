@@ -22,12 +22,12 @@ const HomeScreen = ({ navigation, route }) => {
   return (<>
     <ScrollView showsVerticalScrollIndicator={false} style={styles.contentContainer}>
       <SearchBar navigation={navigation} />
-      <Animatable.View ref={AnimationRef} easing="ease-out" useNativeDriver={true}>
+      {/* <Animatable.View ref={AnimationRef} easing="ease-out" useNativeDriver={true}>
         <HomeMusemsTopVisitedCards navigation={navigation} />
         <HomeMusemsNews />
-      </Animatable.View>
+      </Animatable.View> */}
     </ScrollView>
-    <Header route={route} title={"MUVE"} navigation={navigation} />
+    {/* <Header route={route} title={"MUVE"} navigation={navigation} /> */}
   </>
   );
 }

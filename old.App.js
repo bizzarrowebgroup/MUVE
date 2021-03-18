@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
-
-// import { MaterialCommunityIcons, Entypo, SimpleLineIcons } from '@expo/vector-icons';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
