@@ -9,10 +9,9 @@ import LinksScreen from '../screens/LinksScreen';
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 const BottomTab = createBottomTabNavigator();
 
-import { View } from "react-native";
-
 import { Colors } from '../constants/';
 import { isSmallDevice } from '../constants/Layout';
+// import { BlurView } from "@react-native-community/blur";
 
 const INITIAL_ROUTE_NAME = 'Home';
 
@@ -46,21 +45,21 @@ export default function BottomTabNavigator() {
         headerShown: false
       }}
       tabBar={(props) => (
-        <View
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            borderTopWidth: 0,
-            borderRadius: 20,
-            paddingTop: 20,
-          }}
-          tint="light"
-          intensity={100}
-        >
-          <BottomTabBar {...props} />
-        </View>
+        // <BlurView
+        //   style={{
+        //     position: 'absolute',
+        //     bottom: 0,
+        //     left: 0,
+        //     right: 0,
+        //     borderTopWidth: 0,
+        //     borderRadius: 20,
+        //     paddingTop: 20,
+        //   }}
+        //   blurType="dark"
+        //   blurAmount={100}
+        // >
+        <BottomTabBar {...props} />
+        // </BlurView>
       )}>
       <BottomTab.Screen
         name="Home"

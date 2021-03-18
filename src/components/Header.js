@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
 import { Colors } from '../constants';
-import Icon from './Icon';
-// import { BlurView } from 'expo-blur';
+import { BlurView } from "@react-native-community/blur";
+import Icon from './Icon'
 import { GTSuper } from './StyledText';
 // import { useRoute } from '@react-navigation/native';
 
@@ -27,15 +27,15 @@ const Header = ({
         }
     }
     return (
-        <View
-            // intensity={100}
-            // tint="light"
+        <BlurView
+            blurType="light"
+            blurAmount={100}
             style={[styles.container]}>
             <GTSuper style={styles.headerText}>{title}</GTSuper>
             <TouchableOpacity onPress={navigate}>
-                {/* <Icon color={Colors.grey} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} /> */}
+                <Icon color={Colors.grey} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} />
             </TouchableOpacity>
-        </View>
+        </BlurView>
     )
 };
 const styles = StyleSheet.create({

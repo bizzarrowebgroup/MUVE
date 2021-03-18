@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import Colors from '../constants/Colors';
 import { GilroyBold, GilroyRegular } from '../components/StyledText';
-// import { BlurView } from 'expo-blur';
+import { BlurView } from "@react-native-community/blur";
+
 import { format } from 'date-fns';
 import { it } from 'date-fns/locale';
 
@@ -57,14 +58,14 @@ const CardNews = ({
     }
     return (
         <TouchableOpacity onPress={() => handleNewsPressed(url)}>
-            <View style={styles.card} tint="light" intensity={100}>
+            <BlurView style={styles.card} blurType="light" blurAmount={100}>
                 <Image source={{ uri: image }} style={styles.image} />
                 <View style={styles.boxed}>
                     <GilroyRegular style={styles.date}>{format(new Date(String(date)), "d MMMM, y", { locale: it })}</GilroyRegular>
                     <GilroyBold style={styles.title}>{title}</GilroyBold>
                 </View>
                 <GilroyRegular style={styles.scopri}>{"Scopri di più"}</GilroyRegular>
-            </View>
+            </BlurView>
         </TouchableOpacity>
     )
 }
