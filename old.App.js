@@ -6,23 +6,23 @@ import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-import { Colors } from './src/constants';
-import { MusemModal } from './src/components';
+import { Colors } from './constants';
+import { MusemModal } from './components';
 
-import { BottomTabNavigator, useLinking } from './src/navigation';
+import { BottomTabNavigator, useLinking } from './navigation';
 
-import MuseiMapScreen from './src/screens/MuseiMapScreen';
-import WelcomeScreen from './src/screens/WelcomeScreen';
-import LoginScreen from './src/screens/LoginScreen';
+import MuseiMapScreen from './screens/MuseiMapScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const Stack = createStackNavigator();
 const IS_PROD = false;
 
 const App = ({ }) => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
-  // const [initialNavigationState, setInitialNavigationState] = useState();
+  const [initialNavigationState, setInitialNavigationState] = useState();
   const containerRef = useRef();
-  // const { getInitialState } = useLinking(containerRef);
+  const { getInitialState } = useLinking(containerRef);
 
   useEffect(() => {
     loadResourcesAndDataAsync();
@@ -31,7 +31,7 @@ const App = ({ }) => {
   const loadResourcesAndDataAsync = async () => {
     try {
       // SplashScreen.preventAutoHide();
-      // setInitialNavigationState(await getInitialState());
+      setInitialNavigationState(await getInitialState());
     } catch (e) {
       console.warn(e);
     } finally {
@@ -46,10 +46,7 @@ const App = ({ }) => {
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer
-          ref={containerRef}
-          // initialState={initialNavigationState}
-        >
+        <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
           <Stack.Navigator initialRouteName="Welcome">
             <Stack.Screen name="Welcome" component={WelcomeScreen} options={{
               headerShown: false,
@@ -94,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default App
