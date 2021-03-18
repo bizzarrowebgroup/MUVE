@@ -64,12 +64,14 @@ const App = ({ }) => {
               gestureEnabled: false,
             }} />
             <Stack.Screen name="Mappa" component={MuseiMapScreen} options={{
-              ...TransitionPresets.ModalPresentationIOS,
+              ...TransitionPresets.ModalSlideFromBottomIOS,
+              cardOverlayEnabled: true,
+              gestureEnabled: true,
+              headerStatusBarHeight: 0,
               headerShown: false
             }} />
             <Stack.Screen name="Modal" component={MusemModal} options={{
               ...TransitionPresets.ModalSlideFromBottomIOS,
-              // header: undefined,
               cardOverlayEnabled: true,
               gestureEnabled: true,
               headerStatusBarHeight: 0,

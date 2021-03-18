@@ -287,12 +287,16 @@ const MuseiMapScreen = ({
             </MapView>
             <TouchableOpacity onPress={onpressArrowBack} style={{
                 position: "absolute",
-                top: 20,
+                top: 50,
                 left: 10,
                 width: 40,
-                height: 40
+                height: 40,
+                backgroundColor: "lightgrey",
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: "center"
             }} >
-                <Icon type="SimpleLineIcons" name="arrow-left" size={25} color={Colors.green} />
+                <Icon type="SimpleLineIcons" name="arrow-left" size={20} color={Colors.green} />
             </TouchableOpacity>
             <View style={{ position: "absolute", bottom: 40, right: 40, flexDirection: "row" }}>
                 <View style={{ flexDirection: "column", alignItems: "center", alignContent: "center", justifyContent: "center", marginHorizontal: 4 }}>
