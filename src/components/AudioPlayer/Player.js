@@ -1,49 +1,18 @@
 import React, { useState } from "react";
+import { Image, StyleSheet, Text, View, ViewPropTypes} from "react-native";
 import PropTypes from "prop-types";
-import TrackPlayer, {
-  useTrackPlayerProgress,
-  usePlaybackState,
-  useTrackPlayerEvents
-} from "react-native-track-player";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewPropTypes
-} from "react-native";
 
-function ProgressBar() {
-  const progress = useTrackPlayerProgress();
+import TrackPlayer, { usePlaybackState, useTrackPlayerEvents } from "react-native-track-player";
 
-  return (
-    <View style={styles.progress}>
-      <View style={{ flex: progress.position, backgroundColor: "red" }} />
-      <View
-        style={{
-          flex: progress.duration - progress.position,
-          backgroundColor: "grey"
-        }}
-      />
-    </View>
-  );
-}
+//Components
+import ControlButton from "./ControlButton";
+import ProgressBar from "./ProgressBar";
 
-function ControlButton({ title, onPress }) {
-  return (
-    <TouchableOpacity style={styles.controlButtonContainer} onPress={onPress}>
-      <Text style={styles.controlButtonText}>{title}</Text>
-    </TouchableOpacity>
-  );
-}
 
-ControlButton.propTypes = {
-  title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired
-};
 
-export default function Player(props) {
+const Player = (props) =>
+{
+  
   const playbackState = usePlaybackState();
   const [trackTitle, setTrackTitle] = useState("");
   const [trackArtwork, setTrackArtwork] = useState();
@@ -84,14 +53,16 @@ export default function Player(props) {
   );
 }
 
-Player.propTypes = {
+Player.propTypes = 
+{
   style: ViewPropTypes.style,
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,
   onTogglePlayback: PropTypes.func.isRequired
 };
 
-Player.defaultProps = {
+Player.defaultProps = 
+{
   style: {}
 };
 
@@ -113,12 +84,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: "grey"
   },
-  progress: {
-    height: 1,
-    width: "90%",
-    marginTop: 10,
-    flexDirection: "row"
-  },
   title: {
     marginTop: 10
   },
@@ -129,11 +94,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     flexDirection: "row"
   },
-  controlButtonContainer: {
-    flex: 1
-  },
-  controlButtonText: {
-    fontSize: 18,
-    textAlign: "center"
-  }
 });
+
+export default Player;
