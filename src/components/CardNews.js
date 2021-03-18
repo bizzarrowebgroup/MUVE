@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 10,
         flexDirection: "row",
+        backgroundColor: "white"
     },
     image: {
         width: 125,
@@ -58,7 +59,7 @@ const CardNews = ({
     }
     return (
         <TouchableOpacity onPress={() => handleNewsPressed(url)}>
-            <BlurView style={styles.card} blurType="light" blurAmount={100}>
+            <BlurView style={styles.card} blurRadius={20} blurAmount={100} blurType="light">
                 <Image source={{ uri: image }} style={styles.image} />
                 <View style={styles.boxed}>
                     <GilroyRegular style={styles.date}>{format(new Date(String(date)), "d MMMM, y", { locale: it })}</GilroyRegular>
