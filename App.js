@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { LogBox, StyleSheet, View } from 'react-native';
 
 import { Colors } from './src/constants';
 import { MainNavigator } from './src/navigation';
+
+LogBox.ignoreAllLogs(['"currentStroke"'])
 
 const App = ({ }) => {
   const [isLoadingComplete, setLoadingComplete] = useState(false);

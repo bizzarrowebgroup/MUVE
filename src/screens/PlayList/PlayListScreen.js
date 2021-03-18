@@ -1,10 +1,52 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useLayoutEffect } from 'react'
+import { View } from 'react-native'
+import {
+    useAnimatedScrollHandler,
+    useSharedValue,
+} from 'react-native-reanimated'
 
-export default function PlayListScreen() {
-  return (
-    <View>
-      <Text></Text>
-     </View>
-  );
+import { SceneContainer } from '../../components'
+
+import { album } from './album'
+import { BottomTab } from './BottomTab/BottomTab'
+import { Content } from './Content'
+import { Cover } from './Cover'
+import { Header } from './Header'
+import { useSetContainerStyle } from './hooks/useSetContainerStyle'
+import { outerInset } from './sceneConfig'
+import { styles } from './styles'
+
+const PlayListScreen = ({ navigation }) => {
+    const { containerStyle } = useSetContainerStyle()
+
+    const offsetY = useSharedValue(0)
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            header: () => <Header artist={album.artist} offsetY={offsetY} />,
+        })
+    }, [navigation, offsetY])
+
+    const onScroll = useAnimatedScrollHandler({
+        onScroll: (event) => {
+            offsetY.value = event.contentOffset.y
+        },
+    })
+
+    return (
+        <SceneContainer forceInset={outerInset} style={containerStyle}>
+            <View style={styles.container}>
+                <Cover cover={album.cover} offsetY={offsetY} />
+                <Content
+                    artist={album.artist}
+                    tracks={album.tracks}
+                    offsetY={offsetY}
+                    onScroll={onScroll}
+                />
+                <BottomTab />
+            </View>
+        </SceneContainer>
+    )
 }
+
+export default PlayListScreen

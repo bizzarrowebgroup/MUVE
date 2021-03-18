@@ -29,8 +29,9 @@ const WelcomeScreen = ({
         },
     ]
     const pressEdSalta = () => {
-        console.log("pressed")
-        navigation.navigate('Login');
+        // console.log("pressed")
+        // navigation.navigate('Login');
+        navigation.navigate('Playlist');
     }
     return (
         <>
