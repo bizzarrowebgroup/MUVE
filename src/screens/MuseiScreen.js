@@ -256,7 +256,7 @@ const MuseiScreen = ({ navigation }) => {
                 break;
         }
         return (
-            <Text style={{ color: coloreTesto, fontSize: 15, fontFamily: 'gilroy-regular' }}>
+            <Text style={{ color: coloreTesto, fontSize: 15, fontFamily: 'Gilroy-Regular' }}>
                 {route.title}
             </Text>
         )

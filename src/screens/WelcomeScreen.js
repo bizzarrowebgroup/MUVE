@@ -45,7 +45,7 @@ const WelcomeScreen = ({
                     zIndex: -1
                 }}
             /> */}
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: "#316c60" }}>
                 <Swiper
                     dotStyle={{ backgroundColor: Colors.black, borderRadius: 0, width: 10, height: 10, top: 3, marginLeft: 9 }}
                     autoplay={true}

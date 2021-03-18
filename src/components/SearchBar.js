@@ -78,7 +78,7 @@ const SearchBar = ({
                     <View style={styles.modalView}>
                         {musei.length > 0 && (
                             <>
-                                <Text style={[styles.modalText, { fontFamily: 'gilroy-bold', fontSize: 22 }]}>Risultati della ricerca:</Text>
+                                <Text style={[styles.modalText, { fontFamily: 'Gilroy-Bold', fontSize: 22 }]}>Risultati della ricerca:</Text>
                                 <ScrollView style={{
                                     // minHeight: 300,
                                     maxHeight: 500,
@@ -88,8 +88,8 @@ const SearchBar = ({
                                     {musei.map(item => {
                                         return (
                                             <TouchableOpacity key={item.id} style={styles.rowTitle} onPress={() => handleNewsPressed(item)}>
-                                                <Text style={{ fontFamily: 'gilroy-regular', flex: 1, maxWidth: 180, paddingVertical: 10 }}>{item.titolo}</Text>
-                                                <Text style={{ fontFamily: 'gilroy-regular', marginRight: 5 }}>{">"}</Text>
+                                                <Text style={{ fontFamily: 'Gilroy-Regular', flex: 1, maxWidth: 180, paddingVertical: 10 }}>{item.titolo}</Text>
+                                                <Text style={{ fontFamily: 'Gilroy-Regular', marginRight: 5 }}>{">"}</Text>
                                             </TouchableOpacity>
                                         )
                                     })}
@@ -99,7 +99,7 @@ const SearchBar = ({
                         {musei.length <= 0 && (
                             <>
                                 <Text style={{ textAlign: "center", fontSize: 85, marginBottom: 20 }}>😮</Text>
-                                <Text style={{ fontSize: 17, fontFamily: "gilroy-bold", color: Colors.black, textAlign: "center" }}>{"Ci dispiace ma non troviamo musei con i parametri richiesti.\nTi preghiamo di riprovare."}</Text>
+                                <Text style={{ fontSize: 17, fontFamily: "Gilroy-Bold", color: Colors.black, textAlign: "center" }}>{"Ci dispiace ma non troviamo musei con i parametri richiesti.\nTi preghiamo di riprovare."}</Text>
                             </>
                         )}
                         <TouchableHighlight
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontSize: 20,
         color: Colors.grey,
-        fontFamily: 'gilroy-regular'
+        fontFamily: 'Gilroy-Regular'
     },
     centeredView: {
         flex: 1,
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "left",
-        fontFamily: 'gilroy-regular',
+        fontFamily: 'Gilroy-Regular',
     },
     rowTitle: {
         flexDirection: "row",

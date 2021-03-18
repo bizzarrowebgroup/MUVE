@@ -96,7 +96,7 @@ const MusemModal = ({
                     </Text>}
                     {museoinfo && museoinfo.description && (<>
                         <Text style={{
-                            fontFamily: "gilroy-regular",
+                            fontFamily: "Gilroy-Regular",
                             fontSize: 17,
                             textAlign: "left",
                             marginTop: 20
@@ -105,7 +105,7 @@ const MusemModal = ({
                         </Text>
                         <Text
                             onPress={() => toggleNumberOfLines(2)}
-                            style={{ color: Colors.green, fontFamily: "gilroy-regular", fontSize: 17 }}>
+                            style={{ color: Colors.green, fontFamily: "Gilroy-Regular", fontSize: 17 }}>
                             {textShown === 2 ? 'leggi di meno...' : 'leggi di più...'}
                         </Text></>
                     )}
@@ -115,7 +115,7 @@ const MusemModal = ({
                         <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", alignContent: "center" }}>
                             <Image source={require('../assets/images/map-preview.jpg')} style={{ borderRadius: 10, width: 50, height: 50 }} />
                             <Text style={{
-                                fontFamily: "gilroy-regular",
+                                fontFamily: "Gilroy-Regular",
                                 maxWidth: 190,
                                 marginLeft: 20,
                                 fontSize: 17,
@@ -139,18 +139,18 @@ const MusemModal = ({
                                 </View>
                                 <View style={{ marginLeft: 20, flexDirection: "column", justifyContent: "space-between", alignContent: "center", alignItems: "flex-start" }}>
                                     <Text style={{
-                                        fontFamily: "gilroy-regular",
+                                        fontFamily: "Gilroy-Regular",
                                         fontSize: 17,
                                         marginBottom: 2.5,
                                         color: Colors.lightgreen
                                     }}>{"Oggi aperto"}</Text>
                                     <Text style={{
-                                        fontFamily: "gilroy-regular",
+                                        fontFamily: "Gilroy-Regular",
                                         fontSize: 13,
                                         color: Colors.grey
                                     }}>{"O9.30 - 18.30"}</Text>
                                     {/* <Text style={{
-                                        fontFamily: "gilroy-bold",
+                                        fontFamily: "Gilroy-Bold",
                                         fontSize: 20,
                                         color: Colors.green
                                     }}>{"Oggi Chiuso"}</Text> */}
@@ -162,7 +162,7 @@ const MusemModal = ({
                 </View>
             </ScrollView>
             <Button style={{ marginHorizontal: 30, bottom: 30, backgroundColor: Colors.yellow, height: 70, borderRadius: 10 }}>
-                <Text style={{ color: Colors.black, fontFamily: "gilroy-bold", paddingTop: 10, fontSize: 20, letterSpacing: 1.1 }}>Acquista Biglietti</Text>
+                <Text style={{ color: Colors.black, fontFamily: "Gilroy-Bold", paddingTop: 10, fontSize: 20, letterSpacing: 1.1 }}>Acquista Biglietti</Text>
             </Button>
         </View >
     )

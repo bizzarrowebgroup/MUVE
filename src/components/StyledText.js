@@ -5,10 +5,10 @@ export function MonoText(props) {
   return <Text {...props} style={[props.style, { fontFamily: 'space-mono' }]} />;
 }
 export function GilroyRegular(props) {
-  return <Text {...props} style={[props.style, { fontFamily: 'gilroy-regular' }]} />;
+  return <Text {...props} style={[props.style, { fontFamily: 'Gilroy-Regular' }]} />;
 }
 export function GilroyBold(props) {
-  return <Text {...props} style={[props.style, { fontFamily: 'gilroy-bold' }]} />;
+  return <Text {...props} style={[props.style, { fontFamily: 'Gilroy-Bold' }]} />;
 }
 export function GTSuper(props) {
   return <Text {...props} style={[props.style, { fontFamily: 'gt-super-medium' }]} />;
