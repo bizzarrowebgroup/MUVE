@@ -107,11 +107,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+    justifyContent:'center',
     backgroundColor: "#F5FCFF"
   },
   description: {
     width: "80%",
-    marginTop: 20,
     textAlign: "center"
   },
   player: {
