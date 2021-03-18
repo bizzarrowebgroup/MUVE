@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
     image: {
         width: 125,
         height: 171,
-        borderRadius: 8,
+        backgroundColor: "black"
+        // borderTopLeftRadius: 8,
+        // borderBottomLeftRadius: 8,
     },
     boxed: {
         flexDirection: "column",
