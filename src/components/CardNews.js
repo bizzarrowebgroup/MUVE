@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import Colors from '../constants/Colors';
 import { GilroyBold, GilroyRegular } from '../components/StyledText';
-// import * as WebBrowser from 'expo-web-browser';
 // import { BlurView } from 'expo-blur';
 import { format } from 'date-fns';
 import { it } from 'date-fns/locale';
@@ -51,6 +50,11 @@ const CardNews = ({
     params
 }) => {
     const { id, title, image, date, url, museoID } = params;
+    const handleNewsPressed = async (url) => {
+        await Linking.openURL(
+            url
+        );
+    }
     return (
         <TouchableOpacity onPress={() => handleNewsPressed(url)}>
             <View style={styles.card} tint="light" intensity={100}>
@@ -65,11 +69,6 @@ const CardNews = ({
     )
 }
 
-function handleNewsPressed(url) {
-    WebBrowser.openBrowserAsync(
-        url
-    );
-}
 
 export default CardNews
 

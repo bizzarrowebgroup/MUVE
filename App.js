@@ -52,7 +52,7 @@ const App = ({ }) => {
               gestureEnabled: false,
             }} />
             <Stack.Screen name="Login" component={LoginScreen} options={{
-              ...TransitionPresets.ModalSlideFromBottomIOS,
+              ...TransitionPresets.ModalPresentationIOS,
               header: undefined,
               cardOverlayEnabled: true,
               gestureEnabled: false,
@@ -68,8 +68,8 @@ const App = ({ }) => {
               headerShown: false
             }} />
             <Stack.Screen name="Modal" component={MusemModal} options={{
-              ...TransitionPresets.ModalPresentationIOS,
-              header: undefined,
+              ...TransitionPresets.ModalSlideFromBottomIOS,
+              // header: undefined,
               cardOverlayEnabled: true,
               gestureEnabled: true,
               headerStatusBarHeight: 0,
@@ -85,7 +85,7 @@ const App = ({ }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.green,
+    backgroundColor: Colors.black,
   },
 });
 

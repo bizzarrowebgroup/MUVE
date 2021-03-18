@@ -7,10 +7,7 @@ import Icon from './Icon';
 import { useNavigation } from '@react-navigation/native';
 import Button from './Button';
 
-const MusemModal = ({
-    params,
-    route
-}) => {
+const MusemModal = ({ route }) => {
     // console.log(route.params.params,"2")
     const navigation = useNavigation();
     const [museo, setmuseo] = useState(route.params.params);
@@ -53,7 +50,7 @@ const MusemModal = ({
     return (
         <View style={{
             flex: 1,
-            backgroundColor: Colors.purewhite
+            backgroundColor: Colors.purewhite,
         }}>
             {museo && <Image source={{ uri: museo.mainimage }} style={{
                 height: 350,
@@ -61,12 +58,16 @@ const MusemModal = ({
             }} />}
             <TouchableOpacity onPress={onpressArrowBack} style={{
                 position: "absolute",
-                top: 20,
+                top: 50,
                 left: 10,
                 width: 40,
-                height: 40
+                height: 40,
+                backgroundColor: "lightgrey",
+                borderRadius: 20,
+                justifyContent: 'center',
+                alignItems: "center"
             }} >
-                <Icon type="SimpleLineIcons" name="arrow-left" size={25} color={Colors.green} />
+                <Icon type="SimpleLineIcons" name="arrow-left" size={20} color={Colors.green} />
             </TouchableOpacity>
             <ScrollView style={{
                 flex: 1,

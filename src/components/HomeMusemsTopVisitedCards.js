@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
-import { Icon } from './Icon';
 import { Colors } from '../constants';
 import { GilroyBold, GilroyRegular } from './StyledText';
-import { CardTopVisited } from './CardTopVisited';
+import CardTopVisited from './CardTopVisited';
 
 import { fetchMusei } from '../constants/Api';
 
-const HomeMusemsTopVisitedCards = ({
-    params,
-    navigation
-}) => {
-    let [musei, setMusei] = React.useState({});
-    const [loading, setLoading] = React.useState(false);
-    React.useEffect(() => {
+const HomeMusemsTopVisitedCards = ({ navigation }) => {
+    let [musei, setMusei] = useState({});
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
         setLoading(true);
         fetchMusei().then(json => {
             setLoading(false);
@@ -48,7 +44,7 @@ const HomeMusemsTopVisitedCards = ({
                     showsHorizontalScrollIndicator={false}
                     keyExtractor={item => String(item.id)} //tba string to number maybe?
                     renderItem={({ item }) => <CardTopVisited params={item} navigation={navigation} />}
-                    style={{ marginLeft: 38 }}
+                    contentContainerStyle={{ marginLeft: 38 }}
                     contentInsetAdjustmentBehavior="scrollableAxes"
                 />)}
             </View>

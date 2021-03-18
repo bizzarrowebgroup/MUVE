@@ -21,7 +21,6 @@ const FirstRoute = () => {
         setLoading(true);
         try {
             fetchMusei().then(json => {
-                console.log("--json", json)
                 if (json) setMusei(json)
             })
         } catch (error) {
@@ -46,6 +45,7 @@ const FirstRoute = () => {
         </View>
     )
 };
+
 const SecondRoute = () => {
     let [musei, setMusei] = useState({});
     const [loading, setLoading] = useState(false);
@@ -75,6 +75,7 @@ const SecondRoute = () => {
         </View>
     )
 };
+
 const ThirdRoute = () => {
     let [musei, setMusei] = useState({});
     const [loading, setLoading] = useState(false);
@@ -104,6 +105,7 @@ const ThirdRoute = () => {
         </View>
     )
 };
+
 const FourthRoute = () => {
     let [musei, setMusei] = useState({});
     const [loading, setLoading] = useState(false);
@@ -133,6 +135,7 @@ const FourthRoute = () => {
         </View>
     )
 };
+
 const FifthRoute = () => {
     let [musei, setMusei] = useState({});
     const [loading, setLoading] = useState(false);
