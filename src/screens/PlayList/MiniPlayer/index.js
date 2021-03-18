@@ -5,6 +5,7 @@ import Animated, {
     useAnimatedStyle,
 } from 'react-native-reanimated'
 import PlayIcon from '../../../assets/images/Play.svg'
+import { GilroyBold, GilroyRegular } from '../../../components/StyledText'
 
 import { MINIMIZED_PLAYER_HEIGHT, SNAP_BOTTOM } from '../utils'
 
@@ -66,8 +67,8 @@ export const MiniPlayer = ({
                         <Image style={styles.image} source={{ uri: currentSong.image }} />
                     </View>
                     <View style={styles.songInfoContainer}>
-                        <Text style={styles.songName}>{currentSong.album}</Text>
-                        <Text style={styles.artistName}>{currentSong.artist}</Text>
+                        <GilroyBold style={styles.songName}>{currentSong.album}</GilroyBold>
+                        <GilroyRegular style={styles.artistName}>{currentSong.artist}</GilroyRegular>
                     </View>
                     <View style={styles.playContainer}>
                         <PlayIcon color={'white'} width={24} height={24} />

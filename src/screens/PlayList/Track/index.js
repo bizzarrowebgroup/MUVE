@@ -1,5 +1,8 @@
 import React from 'react'
-import { Text, View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
+import HTML from "react-native-render-html";
+import PlayIcon from '../../../assets/images/Play.svg'
+import { GilroyBold, GilroyRegular } from '../../../components/StyledText';
 
 export const styles = StyleSheet.create({
     artist: {
@@ -29,18 +32,35 @@ export const styles = StyleSheet.create({
         height: 60
     },
 })
-export const Track = ({ track, artist, index }) => (
-    <View style={styles.row}>
-        <Image style={styles.image} source={{ uri: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg" }} />
-        {/* <View style={styles.cell}>
-            <Text style={styles.index}>{index}</Text>
-        </View> */}
-        <View style={[styles.cell, styles.flexible]}>
-            <Text style={styles.name}>{track.name}</Text>
-            <Text style={styles.artist}>{track.artist || artist}</Text>
-        </View>
-        {/* <View style={styles.cell}>
-            <Text>{"Ciao!"}</Text>
-        </View> */}
-    </View>
-)
+export const Track = ({ track, artist, index }) => {
+    return (
+        <>
+            <View style={styles.row}>
+                {/* 
+                <View style={styles.cell}>
+                    <Text style={styles.index}>{index}</Text>
+                </View> */}
+
+                <Image style={styles.image} source={{ uri: track.artwork }} />
+                <View style={[styles.cell, styles.flexible]}>
+                    <GilroyBold style={styles.name}>{track.title}</GilroyBold>
+                    <GilroyRegular style={styles.artist}>{track.artist || artist}</GilroyRegular>
+                </View>
+                <View style={styles.cell}>
+                    <PlayIcon color={'white'} width={24} height={24} />
+                </View>
+            </View>
+            {/* <HTML
+                source={{ html: track.description }}
+                // contentWidth={contentWidth}
+                containerStyle={{
+                    paddingHorizontal: 20,
+                }}
+                baseFontStyle={{
+                    color: "white",
+                    fontFamily: "Gilroy-Regular"
+                }}
+            /> */}
+        </>
+    )
+}

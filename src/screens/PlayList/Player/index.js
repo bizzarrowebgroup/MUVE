@@ -19,6 +19,7 @@ import PlayIcon from '../../../assets/images/RoundPlay.svg'
 import ShuffleIcon from '../../../assets/images/Shuffle.svg'
 import StepBackwardIcon from '../../../assets/images/StepBackwards.svg'
 import StepForwardIcon from '../../../assets/images/StepForward.svg'
+import { GilroyRegular } from '../../../components/StyledText'
 const { width } = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
@@ -89,7 +90,7 @@ const Player = ({ onPress }) => {
                         hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}>
                         <ChevronDown />
                     </TouchableOpacity>
-                    <Text style={styles.title}>{"Artist name"}</Text>
+                    <GilroyRegular style={styles.title}>{"Artist name"}</GilroyRegular>
                     <TouchableOpacity style={styles.button}>
                         <MoreIcon />
                     </TouchableOpacity>
@@ -97,8 +98,8 @@ const Player = ({ onPress }) => {
                 <Image source={{ uri: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg" }} style={styles.cover} />
                 <View style={styles.metadata}>
                     <View>
-                        <Text style={styles.song}>{"Song name"}</Text>
-                        <Text style={styles.artist}>{"artist name"}</Text>
+                        <GilroyRegular style={styles.song}>{"Song name"}</GilroyRegular>
+                        <GilroyRegular style={styles.artist}>{"artist name"}</GilroyRegular>
                     </View>
                     {/* <FavoriteIcon /> */}
                 </View>

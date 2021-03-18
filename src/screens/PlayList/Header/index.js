@@ -6,6 +6,7 @@ import Animated, {
     interpolate,
     useAnimatedStyle,
 } from 'react-native-reanimated'
+import { GilroyRegular } from '../../../components/StyledText'
 
 import { HEADER_DELTA, MAX_HEADER_HEIGHT, MIN_HEADER_HEIGHT } from '../utils'
 
@@ -93,7 +94,7 @@ export const Header = ({ artist = undefined, offsetY = Animated.SharedValue(0) }
                 colors={['rgb(74, 67, 56)', 'rgb(48, 44, 37)', 'transparent']}
             />
             <Animated.View style={[styles.titleContainer, animatedTitle]}>
-                <Text style={styles.title}>{artist}</Text>
+                <GilroyRegular style={styles.title}>{artist}</GilroyRegular>
             </Animated.View>
         </Animated.View>
     )

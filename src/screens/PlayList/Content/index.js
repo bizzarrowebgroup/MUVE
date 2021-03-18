@@ -17,15 +17,16 @@ import { MAX_HEADER_HEIGHT } from '../utils'
 export const styles = StyleSheet.create({
     artist: {
         color: 'white',
-        fontSize: 50,
-        fontWeight: 'bold',
+        fontSize: 30,
         textAlign: 'center',
+        fontFamily: "Gilroy-Bold"
     },
     artistContainer: {
         ...StyleSheet.absoluteFillObject,
         alignItems: 'flex-start',
         justifyContent: 'flex-end',
         paddingHorizontal: 20,
+        paddingVertical: 10,
     },
     container: {
         flex: 1,
