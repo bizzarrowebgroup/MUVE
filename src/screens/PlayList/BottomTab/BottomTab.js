@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
 import { StyleSheet } from 'react-native'
 import {
     PanGestureHandler,
@@ -19,6 +19,9 @@ import { clamp, snapPoint } from 'react-native-redash'
 // import Search from '../../../assets/images/search.svg'
 // import Library from '../../../assets/images/Library.svg'
 // import TabIcon from '../TabIcon'
+
+import TrackPlayer, { usePlaybackState } from "react-native-track-player";
+import { trackChanged } from "../../../components/AudioPlayer/PlayerConfig";
 
 import { MiniPlayer } from '../MiniPlayer'
 import Player from '../Player'
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     },
 })
 
-export const BottomTab = () => {
+export const BottomTab = ({ onNext, onPrevious, onTogglePlayback }) => {
     const translateY = useSharedValue(SNAP_BOTTOM)
     const snapPoints = [SNAP_TOP, SNAP_BOTTOM]
 
@@ -86,17 +89,50 @@ export const BottomTab = () => {
     }, [translateY])
 
     const goDown = useCallback(() => {
-        console.log("--pressed")
         translateY.value = withTiming(SNAP_BOTTOM)
     }, [translateY])
+
+    const playbackState = usePlaybackState();
+    const [trackTitle, setTrackTitle] = useState("");
+    const [trackArtwork, setTrackArtwork] = useState();
+    const [trackArtist, setTrackArtist] = useState("");
+    const [middleButtonState, setMiddle] = useState("Play")
+    trackChanged(setTrackTitle, setTrackArtist, setTrackArtwork)
+
+    useEffect(() => {
+        if (playbackState === TrackPlayer.STATE_PLAYING || playbackState === TrackPlayer.STATE_BUFFERING) {
+            setMiddle("Pause")
+        } else setMiddle("Play")
+    }, [playbackState])
 
     return (
         <>
             <PanGestureHandler onGestureEvent={gestureHandler}>
                 <Animated.View style={[styles.playerSheet, animatedStyle]}>
-                    <Player onPress={goDown} />
+                    <Player
+                        onPress={goDown}
+                        onTogglePlayback={onTogglePlayback}
+                        middleButtonState={middleButtonState}
+                        currentSong={{
+                            image: trackArtwork,
+                            album: trackTitle,
+                            artist: trackArtist
+                        }}
+                        onNext={onNext}
+                        onPrevious={onPrevious}
+                    />
                     <PlayerOverlay translateY={translateY} />
-                    <MiniPlayer onPress={goUp} translateY={translateY} />
+                    <MiniPlayer
+                        onPress={goUp}
+                        translateY={translateY}
+                        onTogglePlayback={onTogglePlayback}
+                        middleButtonState={middleButtonState}
+                        currentSong={{
+                            image: trackArtwork,
+                            album: trackTitle,
+                            artist: trackArtist
+                        }}
+                    />
                 </Animated.View>
             </PanGestureHandler>
             {/* <Animated.View style={animatedBottomBarStyle}>

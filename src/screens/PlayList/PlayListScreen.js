@@ -1,5 +1,5 @@
-import React, { useLayoutEffect } from 'react'
-import { View } from 'react-native'
+import React, { useLayoutEffect, useEffect } from 'react'
+import { View, Text } from 'react-native'
 import {
     useAnimatedScrollHandler,
     useSharedValue,
@@ -15,6 +15,10 @@ import { Header } from './Header'
 import { useSetContainerStyle } from './hooks/useSetContainerStyle'
 import { outerInset } from './sceneConfig'
 import { styles } from './styles'
+
+//Audio Player
+import { usePlaybackState } from "react-native-track-player";
+import { setup, togglePlayback, playNext, playPrevious, playStatus } from "../../components/AudioPlayer/PlayerConfig";
 
 const PlayListScreen = ({ navigation }) => {
     const { containerStyle } = useSetContainerStyle()
@@ -33,6 +37,11 @@ const PlayListScreen = ({ navigation }) => {
         },
     })
 
+    const playbackState = usePlaybackState();
+    useEffect(() => {
+        setup();
+    }, []);
+
     return (
         <SceneContainer forceInset={outerInset} style={containerStyle}>
             <View style={styles.container}>
@@ -43,7 +52,14 @@ const PlayListScreen = ({ navigation }) => {
                     offsetY={offsetY}
                     onScroll={onScroll}
                 />
-                <BottomTab />
+                {/* <View style={{ position: "absolute", bottom: 100 }}>
+                    <Text style={{ color: "white" }}>Audio Status: {playStatus(playbackState)}</Text>
+                </View> */}
+                <BottomTab
+                    onNext={playNext}
+                    onPrevious={playPrevious}
+                    onTogglePlayback={() => togglePlayback(playbackState)}
+                />
             </View>
         </SceneContainer>
     )

@@ -8,7 +8,6 @@ import MuseiMapScreen from '../screens/MuseiMapScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import OfflineScreen from '../screens/OfflineScreen';
-import PlayListScreen from '../screens/PlayList/PlayListScreen';
 import { linking } from './useLinking';
 import { MusemModal } from '../components';
 import NetInfo from "@react-native-community/netinfo";
@@ -45,13 +44,13 @@ const MainNavigator = () => {
                     headerShown: false,
                     gestureEnabled: false,
                 }} />
-                <Stack.Screen name="Playlist" component={PlayListScreen} options={{
+                {/* <Stack.Screen name="Playlist" component={PlayListScreen} options={{
                     header: undefined,
                     cardOverlayEnabled: true,
                     gestureEnabled: false,
                     headerStatusBarHeight: 0,
                     headerShown: false
-                }} />
+                }} /> */}
                 <Stack.Screen name="Login" component={LoginScreen} options={{
                     ...TransitionPresets.ModalPresentationIOS,
                     header: undefined,

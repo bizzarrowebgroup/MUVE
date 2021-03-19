@@ -3,8 +3,6 @@ import {
     Image,
     SafeAreaView,
     StyleSheet,
-    Text,
-    // TouchableWithoutFeedback,
     View,
     Dimensions,
     TouchableOpacity
@@ -12,13 +10,12 @@ import {
 import LinearGradient from 'react-native-linear-gradient'
 
 import ChevronDown from '../../../assets/images/ChevronDown.svg'
-// import FavoriteIcon from '../../../assets/images/Favorite.svg'
 import MoreIcon from '../../../assets/images/More.svg'
 import RepeatIcon from '../../../assets/images/Repeat.svg'
-import PlayIcon from '../../../assets/images/RoundPlay.svg'
 import ShuffleIcon from '../../../assets/images/Shuffle.svg'
 import StepBackwardIcon from '../../../assets/images/StepBackwards.svg'
 import StepForwardIcon from '../../../assets/images/StepForward.svg'
+import { Icon } from '../../../components'
 import { GilroyRegular } from '../../../components/StyledText'
 const { width } = Dimensions.get('window')
 
@@ -74,7 +71,18 @@ export const styles = StyleSheet.create({
         padding: 16,
     },
 })
-const Player = ({ onPress }) => {
+const Player = ({
+    onPress,
+    onTogglePlayback,
+    middleButtonState,
+    currentSong = {
+        image: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg",
+        album: "Album name",
+        artist: "Artist name"
+    },
+    onPrevious,
+    onNext
+}) => {
     const examplePress = () => console.log("pressed")
     return (
         <SafeAreaView style={styles.root}>
@@ -90,36 +98,36 @@ const Player = ({ onPress }) => {
                         hitSlop={{ bottom: 20, left: 20, right: 20, top: 20 }}>
                         <ChevronDown />
                     </TouchableOpacity>
-                    <GilroyRegular style={styles.title}>{"Artist name"}</GilroyRegular>
+                    <GilroyRegular style={styles.title}>{currentSong.artist}</GilroyRegular>
                     <TouchableOpacity style={styles.button}>
                         <MoreIcon />
                     </TouchableOpacity>
                 </View>
-                <Image source={{ uri: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg" }} style={styles.cover} />
+                <Image source={{ uri: currentSong.image }} style={styles.cover} />
                 <View style={styles.metadata}>
                     <View>
-                        <GilroyRegular style={styles.song}>{"Song name"}</GilroyRegular>
-                        <GilroyRegular style={styles.artist}>{"artist name"}</GilroyRegular>
+                        <GilroyRegular style={styles.song}>{currentSong.album}</GilroyRegular>
+                        <GilroyRegular style={styles.artist}>{currentSong.artist}</GilroyRegular>
                     </View>
-                    {/* <FavoriteIcon /> */}
                 </View>
                 <View style={styles.slider} />
                 <View style={styles.controls}>
-                    <TouchableOpacity onPress={examplePress}>
+                    {/* <TouchableOpacity onPress={examplePress}>
                         <ShuffleIcon />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={examplePress}>
+                    </TouchableOpacity> */}
+                    <TouchableOpacity onPress={onPrevious}>
                         <StepBackwardIcon />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={examplePress}>
-                        <PlayIcon />
+                    <TouchableOpacity onPress={onTogglePlayback} style={{}}>
+                        {middleButtonState === "Play" && (<Icon name="controller-play" type="entypo" color="white" size={40} />)}
+                        {middleButtonState === "Pause" && (<Icon name="controller-stop" type="entypo" color="white" size={40} />)}
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={examplePress}>
+                    <TouchableOpacity onPress={onNext}>
                         <StepForwardIcon />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={examplePress}>
+                    {/* <TouchableOpacity onPress={examplePress}>
                         <RepeatIcon />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         </SafeAreaView>

@@ -1,10 +1,11 @@
 import React from 'react'
-import { Image, Text, TouchableWithoutFeedback, View, StyleSheet } from 'react-native'
+import { Image, TouchableOpacity, TouchableWithoutFeedback, View, StyleSheet } from 'react-native'
 import Animated, {
     interpolate,
     useAnimatedStyle,
 } from 'react-native-reanimated'
 import PlayIcon from '../../../assets/images/Play.svg'
+import StopIcon from '../../../assets/images/Stop.svg'
 import { GilroyBold, GilroyRegular } from '../../../components/StyledText'
 
 import { MINIMIZED_PLAYER_HEIGHT, SNAP_BOTTOM } from '../utils'
@@ -44,8 +45,15 @@ const styles = StyleSheet.create({
 export const MiniPlayer = ({
     onPress = () => { },
     translateY = Animated.SharedValue(0),
-    currentSong = { image: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg", album: "Album name", artist: "Artist name" }
+    currentSong = {
+        image: "https://media.izi.travel/ab5d2ab4-1a11-45bb-9470-550d170c59db/6a2b1271-003c-4845-a3d6-11746cab1543_800x600.jpg",
+        album: "Album name",
+        artist: "Artist name"
+    },
+    onTogglePlayback,
+    middleButtonState,// Play / Pause
 }) => {
+
     const animatedMinimizedPlayerStyle = useAnimatedStyle(() => ({
         height: MINIMIZED_PLAYER_HEIGHT,
         left: 0,
@@ -70,9 +78,10 @@ export const MiniPlayer = ({
                         <GilroyBold style={styles.songName}>{currentSong.album}</GilroyBold>
                         <GilroyRegular style={styles.artistName}>{currentSong.artist}</GilroyRegular>
                     </View>
-                    <View style={styles.playContainer}>
-                        <PlayIcon color={'white'} width={24} height={24} />
-                    </View>
+                    <TouchableOpacity style={styles.playContainer} onPress={onTogglePlayback}>
+                        {middleButtonState === "Play" && (<PlayIcon color={'white'} width={24} height={24} />)}
+                        {middleButtonState === "Pause" && (<StopIcon color={'white'} width={24} height={24} />)}
+                    </TouchableOpacity>
                 </View>
             </TouchableWithoutFeedback>
         </Animated.View>

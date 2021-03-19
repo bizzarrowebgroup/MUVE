@@ -5,7 +5,8 @@ import { TabBarIcon } from '../components';
 import HomeScreen from '../screens/HomeScreen';
 import MuseiScreen from '../screens/MuseiScreen';
 import LinksScreen from '../screens/LinksScreen';
-import PlaylistScreen from '../screens/PlaylistScreen';
+// import PlaylistScreen from '../screens/PlaylistScreen';
+import PlayListScreen from '../screens/PlayList/PlayListScreen';
 
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 const BottomTab = createBottomTabNavigator();
@@ -86,15 +87,23 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="cog" />,
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="PlaylistScreen"
         component={PlaylistScreen}
         options={{
           title: 'PlaylistScreen',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="play-circle" />,
         }}
+      /> */}
+      <BottomTab.Screen
+        name="SpotifyClone"
+        component={PlayListScreen}
+        options={{
+          headerShown: false,
+          headerStatusBarHeight: 0,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="play-circle" />,
+        }}
       />
     </BottomTab.Navigator>
   );
 }
-// const routeName = route.state?.routes[route.state.index]?.name ?? INITIAL_ROUTE_NAME;
