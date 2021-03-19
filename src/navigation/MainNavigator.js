@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import BottomTabNavigator from './BottomTabNavigator';
+// import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 
 import MuseiMapScreen from '../screens/MuseiMapScreen';
