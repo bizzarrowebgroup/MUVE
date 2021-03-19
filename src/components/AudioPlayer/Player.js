@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   cover: {
     width: '100%',
-    height: 140,
+    height: 240,
     borderRadius: 4,
   },
   title: {
