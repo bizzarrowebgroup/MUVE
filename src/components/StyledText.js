@@ -12,7 +12,7 @@ export function MonoText(props) {
   return <Text {...props} style={[props.style, { fontFamily: 'space-mono' }]} />;
 }
 export function GilroyRegular(props) {
-  if(props.variant === "small") {
+  if (props.variant === "small") {
     return <Text {...props} style={[props.style, { fontSize: hp(1.3), fontFamily: 'Gilroy-Regular' }]} />;
   } else if (props.variant === "normal") {
     return <Text {...props} style={[props.style, { fontSize: hp(1.5), fontFamily: 'Gilroy-Regular' }]} />;
@@ -20,6 +20,9 @@ export function GilroyRegular(props) {
   return <Text {...props} style={[props.style, { fontSize: hp(2), fontFamily: 'Gilroy-Regular' }]} />;
 }
 export function GilroyBold(props) {
+  if (props.variant === "small") {
+    return <Text {...props} style={[props.style, { fontSize: hp(1.3), fontFamily: 'Gilroy-Bold' }]} />;
+  }
   return <Text {...props} style={[props.style, { fontSize: hp(2), fontFamily: 'Gilroy-Bold' }]} />;
 }
 export function GTSuper(props) {

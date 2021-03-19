@@ -11,12 +11,12 @@ import LinearGradient from 'react-native-linear-gradient'
 
 import ChevronDown from '../../../assets/images/ChevronDown.svg'
 import MoreIcon from '../../../assets/images/More.svg'
-import RepeatIcon from '../../../assets/images/Repeat.svg'
-import ShuffleIcon from '../../../assets/images/Shuffle.svg'
+// import RepeatIcon from '../../../assets/images/Repeat.svg'
+// import ShuffleIcon from '../../../assets/images/Shuffle.svg'
 import StepBackwardIcon from '../../../assets/images/StepBackwards.svg'
 import StepForwardIcon from '../../../assets/images/StepForward.svg'
 import { Icon } from '../../../components'
-import { GilroyRegular } from '../../../components/StyledText'
+import { GilroyBold, GilroyRegular } from '../../../components/StyledText'
 const { width } = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
@@ -65,8 +65,6 @@ export const styles = StyleSheet.create({
     },
     song: {
         color: 'white',
-        fontSize: 32,
-        fontWeight: 'bold',
     },
     title: {
         color: 'white',
@@ -109,7 +107,7 @@ const Player = ({
                 <Image source={{ uri: currentSong.image }} style={styles.cover} />
                 <View style={styles.metadata}>
                     <View>
-                        <GilroyRegular style={styles.song}>{currentSong.album}</GilroyRegular>
+                        <GilroyBold style={styles.song}>{currentSong.album}</GilroyBold>
                         <GilroyRegular style={styles.artist}>{currentSong.artist}</GilroyRegular>
                     </View>
                 </View>

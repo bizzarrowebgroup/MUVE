@@ -10,6 +10,7 @@ import Animated, {
     interpolate,
     useAnimatedStyle,
 } from 'react-native-reanimated'
+import { GilroyBold } from '../../../components/StyledText'
 
 import { Track } from '../Track'
 import { MAX_HEADER_HEIGHT } from '../utils'
@@ -17,9 +18,7 @@ import { MAX_HEADER_HEIGHT } from '../utils'
 export const styles = StyleSheet.create({
     artist: {
         color: 'white',
-        fontSize: 30,
         textAlign: 'center',
-        fontFamily: "Gilroy-Bold"
     },
     artistContainer: {
         ...StyleSheet.absoluteFillObject,
@@ -89,7 +88,7 @@ export const Content = ({
                         />
                     </Animated.View>
                     <View style={styles.artistContainer}>
-                        <Text style={styles.artist}>{artist}</Text>
+                        <GilroyBold style={styles.artist}>{artist}</GilroyBold>
                     </View>
                 </Animated.View>
                 <View style={styles.tracks}>

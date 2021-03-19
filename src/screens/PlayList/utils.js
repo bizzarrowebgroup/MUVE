@@ -33,6 +33,6 @@ export const MAX_HEADER_HEIGHT = height * (1 - 1 / φ)
 export const HEADER_DELTA = MAX_HEADER_HEIGHT - MIN_HEADER_HEIGHT
 
 export const TABBAR_HEIGHT = getBottomSpace() + 40
-export const MINIMIZED_PLAYER_HEIGHT = getBottomSpace() + 40
+export const MINIMIZED_PLAYER_HEIGHT = 34+ 40
 export const SNAP_TOP = 0
 export const SNAP_BOTTOM = height - TABBAR_HEIGHT - MINIMIZED_PLAYER_HEIGHT

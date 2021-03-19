@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     },
     songInfoContainer: {
         flex: 3,
+        paddingLeft: 10
     },
     songName: {
         color: 'white',
@@ -63,7 +64,6 @@ export const MiniPlayer = ({
 
     const animatedMinimizedPlayerStyle = useAnimatedStyle(() => ({
         height: MINIMIZED_PLAYER_HEIGHT,
-        left: 0,
         opacity: interpolate(
             translateY.value,
             [SNAP_BOTTOM - MINIMIZED_PLAYER_HEIGHT, SNAP_BOTTOM],
@@ -71,6 +71,7 @@ export const MiniPlayer = ({
         ),
         position: 'absolute',
         right: 0,
+        left: 0,
         top: 0,
     }))
 
@@ -92,7 +93,7 @@ export const MiniPlayer = ({
                             <Image style={styles.image} source={{ uri: currentSong.image }} />
                         </View>
                         <View style={styles.songInfoContainer}>
-                            <GilroyBold style={styles.songName}>{currentSong.album}</GilroyBold>
+                            <GilroyBold variant="small" style={styles.songName}>{currentSong.album}</GilroyBold>
                             <GilroyRegular style={styles.artistName}>{currentSong.artist}</GilroyRegular>
                         </View>
                         <TouchableOpacity style={styles.playContainer} onPress={onTogglePlayback}>
