@@ -12,6 +12,8 @@ target 'musei' do
     :hermes_enabled => true
   )
 
+  pod 'RNSharedElement', :path => '../node_modules/react-native-shared-element'
+
   target 'museiTests' do
     inherit! :complete
     # Pods for testing
