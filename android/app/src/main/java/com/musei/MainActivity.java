@@ -1,4 +1,4 @@
-package com.musei;
+package it.develon.musei;
 
 import com.facebook.react.ReactActivity;
 

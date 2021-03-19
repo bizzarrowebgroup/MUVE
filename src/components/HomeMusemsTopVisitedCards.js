@@ -30,7 +30,7 @@ const HomeMusemsTopVisitedCards = ({ navigation }) => {
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", alignContent: "center" }}>
                     <GilroyBold style={{ color: Colors.green }}>Più visitati</GilroyBold>
                     <TouchableOpacity onPress={() => navigation.navigate('Musei')}>
-                        <GilroyRegular style={{ color: Colors.grey }}>Mostra tutti</GilroyRegular>
+                        <GilroyRegular variant="small" style={{ color: Colors.grey }}>Mostra tutti</GilroyRegular>
                     </TouchableOpacity>
                 </View>
             </View>

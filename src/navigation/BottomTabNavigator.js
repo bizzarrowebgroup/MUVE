@@ -4,8 +4,7 @@ import { TabBarIcon } from '../components';
 
 import HomeScreen from '../screens/HomeScreen';
 import MuseiScreen from '../screens/MuseiScreen';
-import LinksScreen from '../screens/LinksScreen';
-// import PlaylistScreen from '../screens/PlaylistScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import PlayListScreen from '../screens/PlayList/PlayListScreen';
 
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
@@ -13,7 +12,6 @@ const BottomTab = createBottomTabNavigator();
 
 import { Colors } from '../constants/';
 import { isSmallDevice } from '../constants/Layout';
-// import { BlurView } from "@react-native-community/blur";
 
 const INITIAL_ROUTE_NAME = 'Home';
 
@@ -46,21 +44,7 @@ export default function BottomTabNavigator() {
         headerShown: false
       }}
       tabBar={(props) => (
-        // <BlurView
-        //   style={{
-        //     position: 'absolute',
-        //     bottom: 0,
-        //     left: 0,
-        //     right: 0,
-        //     borderTopWidth: 0,
-        //     borderRadius: 20,
-        //     paddingTop: 20,
-        //   }}
-        //   blurType="dark"
-        //   blurAmount={100}
-        // >
         <BottomTabBar {...props} />
-        // </BlurView>
       )}>
       <BottomTab.Screen
         name="Home"
@@ -80,20 +64,12 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Settings"
-        component={LinksScreen}
+        component={SettingsScreen}
         options={{
           title: 'Settings',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="cog" />,
         }}
       />
-      {/* <BottomTab.Screen
-        name="PlaylistScreen"
-        component={PlaylistScreen}
-        options={{
-          title: 'PlaylistScreen',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="play-circle" />,
-        }}
-      /> */}
       <BottomTab.Screen
         name="SpotifyClone"
         component={PlayListScreen}

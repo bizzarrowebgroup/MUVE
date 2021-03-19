@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.musei",
+    package = "it.develon.musei",
 )
 
 android_resource(
     name = "res",
-    package = "com.musei",
+    package = "it.develon.musei",
     res = "src/main/res",
 )
 

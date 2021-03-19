@@ -29,13 +29,15 @@ const HomeMusemsNews = ({
                 {loading && (
                     <ActivityIndicator size="large" color={Colors.black} style={{ alignSelf: "center" }} />
                 )}
-                {!loading && (<FlatList
-                    data={news}
-                    showsVerticalScrollIndicator={false}
-                    keyExtractor={item => String(item.id)} //tba string to number maybe?
-                    renderItem={({ item }) => <CardNews params={item} />}
-                    style={{ marginLeft: 38, paddingBottom: 250 }}
-                />)}
+                {!loading && (
+                    <FlatList
+                        data={news}
+                        showsVerticalScrollIndicator={false}
+                        keyExtractor={item => String(item.id)} //tba string to number maybe?
+                        renderItem={({ item }) => <CardNews params={item} />}
+                        style={{ marginLeft: 38, paddingBottom: 250 }}
+                    />
+                )}
             </View>
         </>
     )

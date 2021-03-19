@@ -97,3 +97,9 @@ export const trackChanged = async (setTrackTitle, setTrackArtist, setTrackArtwor
     }
   });
 }
+
+export const playTrack = async (track) => {
+  await TrackPlayer.reset();
+  await TrackPlayer.add(track);
+  await TrackPlayer.play();
+}

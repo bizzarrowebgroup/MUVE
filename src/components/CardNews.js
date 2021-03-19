@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     image: {
         width: 125,
         height: 171,
-        backgroundColor: "black"
-        // borderTopLeftRadius: 8,
-        // borderBottomLeftRadius: 8,
+        backgroundColor: "black",
+        borderTopLeftRadius: 8,
+        borderBottomLeftRadius: 8,
     },
     boxed: {
         flexDirection: "column",
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 5,
-        maxWidth: 180,
+        maxWidth: 150,
         fontSize: 16,
         lineHeight: 20,
         color: Colors.black
@@ -61,14 +61,14 @@ const CardNews = ({
     }
     return (
         <TouchableOpacity onPress={() => handleNewsPressed(url)}>
-            <BlurView style={styles.card} blurRadius={20} blurAmount={100} blurType="light">
+            <View style={styles.card} blurRadius={20} blurAmount={100} blurType="light">
                 <Image source={{ uri: image }} style={styles.image} />
                 <View style={styles.boxed}>
-                    <GilroyRegular style={styles.date}>{format(new Date(String(date)), "d MMMM, y", { locale: it })}</GilroyRegular>
+                    <GilroyRegular variant="small" style={styles.date}>{format(new Date(String(date)), "d MMMM, y", { locale: it })}</GilroyRegular>
                     <GilroyBold style={styles.title}>{title}</GilroyBold>
                 </View>
-                <GilroyRegular style={styles.scopri}>{"Scopri di più"}</GilroyRegular>
-            </BlurView>
+                <GilroyRegular variant="small" style={styles.scopri}>{"Scopri di più"}</GilroyRegular>
+            </View>
         </TouchableOpacity>
     )
 }

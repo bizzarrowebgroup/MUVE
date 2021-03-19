@@ -18,7 +18,7 @@ import { styles } from './styles'
 
 //Audio Player
 import { usePlaybackState } from "react-native-track-player";
-import { setup, togglePlayback, playNext, playPrevious, playStatus } from "../../components/AudioPlayer/PlayerConfig";
+import { playTrack, setup, togglePlayback, playNext, playPrevious, playStatus } from "../../components/AudioPlayer/PlayerConfig";
 
 const PlayListScreen = ({ navigation }) => {
     const { containerStyle } = useSetContainerStyle()
@@ -51,7 +51,7 @@ const PlayListScreen = ({ navigation }) => {
                     tracks={album.tracks}
                     offsetY={offsetY}
                     onScroll={onScroll}
-                    onTogglePlayback={(track) => togglePlayback(playbackState, track)}
+                    onTogglePlayback={(track) => playTrack(track)}
                 />
                 <BottomTab
                     onNext={playNext}

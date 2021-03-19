@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {
     ScrollView,
-    TouchableHighlight,
     ActivityIndicator,
     TextInput,
     Text,
     View,
     StyleSheet,
     Modal,
-    TouchableOpacity
+    TouchableOpacity,
+    Platform
 } from 'react-native';
 
 import Icon from './Icon';
 import { Colors } from '../constants';
 import { searchMusei } from '../constants/Api';
+import { GilroyBold, GilroyRegular } from './StyledText';
 
 const SearchBar = ({
     route,
@@ -47,7 +48,7 @@ const SearchBar = ({
                     <ActivityIndicator size="large" color={Colors.black} style={{ position: "absolute", top: 10, alignSelf: "center" }} />
                 )}
                 <View style={styles.box}>
-                    <Icon name={'search-web'} color={Colors.black} size={25} />
+                    <Icon name={'search-web'} color={Colors.black} size={25} style={{ marginLeft: 15 }} />
                     {searchTerm.length > 0 && (
                         <TouchableOpacity onPress={() => setSearchTerm("")} style={{ zIndex: 9, position: "absolute", right: 20, width: 20, height: 20 }}>
                             <Icon type={"SimpleLineIcons"} name={"close"} color={Colors.black} size={20} />
@@ -77,7 +78,7 @@ const SearchBar = ({
                     <View style={styles.modalView}>
                         {musei.length > 0 && (
                             <>
-                                <Text style={[styles.modalText, { fontFamily: 'Gilroy-Bold', fontSize: 22 }]}>Risultati della ricerca:</Text>
+                                <GilroyBold style={[styles.modalText]}>Risultati della ricerca:</GilroyBold>
                                 <ScrollView style={{
                                     // minHeight: 300,
                                     maxHeight: 500,
@@ -87,8 +88,8 @@ const SearchBar = ({
                                     {musei.map(item => {
                                         return (
                                             <TouchableOpacity key={item.id} style={styles.rowTitle} onPress={() => handleNewsPressed(item)}>
-                                                <Text style={{ fontFamily: 'Gilroy-Regular', flex: 1, maxWidth: 180, paddingVertical: 10 }}>{item.titolo}</Text>
-                                                <Text style={{ fontFamily: 'Gilroy-Regular', marginRight: 5 }}>{">"}</Text>
+                                                <GilroyRegular style={{ flex: 1, maxWidth: 180, paddingVertical: 10 }}>{item.titolo}</GilroyRegular>
+                                                <GilroyRegular style={{ marginRight: 5 }}>{">"}</GilroyRegular>
                                             </TouchableOpacity>
                                         )
                                     })}
@@ -98,17 +99,19 @@ const SearchBar = ({
                         {musei.length <= 0 && (
                             <>
                                 <Text style={{ textAlign: "center", fontSize: 85, marginBottom: 20 }}>😮</Text>
-                                <Text style={{ fontSize: 17, fontFamily: "Gilroy-Bold", color: Colors.black, textAlign: "center" }}>{"Ci dispiace ma non troviamo musei con i parametri richiesti.\nTi preghiamo di riprovare."}</Text>
+                                <GilroyRegular style={{ color: Colors.black, textAlign: "center" }}>{"Ci dispiace ma non troviamo musei con i parametri richiesti.\nTi preghiamo di riprovare."}</GilroyRegular>
                             </>
                         )}
-                        <TouchableHighlight
-                            style={{ ...styles.openButton }}
+                        <TouchableOpacity
+                            style={[styles.openButton, {
+                                zIndex: 99
+                            }]}
                             onPress={() => {
                                 setModalVisible(!modalVisible);
                             }}
                         >
-                            <Icon type={"SimpleLineIcons"} name={"close"} color={Colors.purewhite} size={40} />
-                        </TouchableHighlight>
+                            <Icon type={"SimpleLineIcons"} name={"close"} color={Colors.black} size={40} />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </Modal>
@@ -123,7 +126,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: Colors.purewhite,
         borderRadius: 8,
-        height: 55,
+        // height: 55,
         shadowColor: Colors.black,
         shadowOffset: {
             width: 0,
@@ -134,8 +137,8 @@ const styles = StyleSheet.create({
         elevation: 24,
     },
     box: {
-        marginLeft: 16,
-        marginVertical: 14,
+        // backgroundColor: "red",
+        marginVertical: Platform.OS === "ios" ? 15 : 0,
         flexDirection: "row",
         justifyContent: "flex-start",
         alignContent: "center",
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
     },
     text: {
         marginLeft: 10,
-        fontSize: 20,
+        fontSize: 14,
         color: Colors.grey,
         fontFamily: 'Gilroy-Regular'
     },
@@ -170,13 +173,14 @@ const styles = StyleSheet.create({
     },
     openButton: {
         position: "absolute",
-        top: -70,
         width: 40,
         height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        alignSelf: 'center',
+        margin: 10,
+        // top: -70,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        // alignContent: 'center',
+        // alignSelf: 'center',
     },
     textStyle: {
         color: "white",

@@ -6,11 +6,7 @@ import Icon from './Icon'
 import { GTSuper } from './StyledText';
 // import { useRoute } from '@react-navigation/native';
 
-const Header = ({
-    navigation,
-    title,
-    route
-}) => {
+const Header = ({ navigation, title, route }) => {
     const [isOnMusei, setisOnMusei] = useState(false)
     useEffect(() => {
         if (title === "MUVE") {
@@ -39,6 +35,7 @@ const Header = ({
         </View>
     )
 };
+
 const styles = StyleSheet.create({
     container: {
         paddingTop: 95,

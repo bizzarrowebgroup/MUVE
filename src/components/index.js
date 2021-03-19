@@ -8,6 +8,7 @@ import StyledText from './StyledText'
 import Icon from './Icon'
 import Card from './Card'
 import SceneContainer from './SceneContainer'
+import OptionsButton from './OptionsButton';
 
 export {
     TabBarIcon,
@@ -19,5 +20,6 @@ export {
     StyledText,
     Icon,
     Card,
-    SceneContainer
+    SceneContainer,
+    OptionsButton
 }
