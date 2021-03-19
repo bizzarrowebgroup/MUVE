@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from 'react'
-import { View } from 'react-native'
+import { View, Button, TouchableOpacity, Text, StyleSheet } from 'react-native'
 import {
     useAnimatedScrollHandler,
     useSharedValue,
@@ -43,10 +43,40 @@ const PlayListScreen = ({ navigation }) => {
                     offsetY={offsetY}
                     onScroll={onScroll}
                 />
+
+                <View style = {style.coupon}>
+                    <TouchableOpacity onPress = {() => navigation.navigate("CouponScreen")}>
+                        <Text style = {style.couponText}>
+                            {"Coupons"}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
                 <BottomTab />
             </View>
+
         </SceneContainer>
     )
 }
+
+const style = StyleSheet.create({
+    coupon:
+    {
+        backgroundColor: 'rgba(255,255,255, 1)', 
+        justifyContent:'center', 
+        alignSelf:'center', 
+        position:'absolute', 
+        bottom:180,
+        width:'80%',
+        padding:20,
+        borderRadius: 5,
+    },
+    couponText:
+    {
+        color:'black',
+        fontSize: 20,
+        textAlign:'center'
+    }
+})
 
 export default PlayListScreen

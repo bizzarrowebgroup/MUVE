@@ -12,6 +12,7 @@ import PlayListScreen from '../screens/PlayList/PlayListScreen';
 import { linking } from './useLinking';
 import { MusemModal } from '../components';
 import NetInfo from "@react-native-community/netinfo";
+import CouponScreen from '../screens/CouponScreen/CouponScreen';
 
 
 const Stack = createStackNavigator();
@@ -83,6 +84,11 @@ const MainNavigator = () => {
                     gestureEnabled: false,
                     headerStatusBarHeight: 0,
                     headerShown: false
+                }} />
+                <Stack.Screen name="CouponScreen" component={CouponScreen} options={{
+                    cardOverlayEnabled: true,
+                    gestureEnabled: false,
+                    headerShown: true
                 }} />
             </Stack.Navigator>
         </NavigationContainer>
