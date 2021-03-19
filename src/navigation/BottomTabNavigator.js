@@ -29,17 +29,16 @@ export default function BottomTabNavigator() {
           borderTopWidth: 0,
           paddingTop: isSmallDevice ? 0 : 20,
           paddingHorizontal: 50,
-          // borderRadius: 20,
-          // backgroundColor: 'transparent',
+          borderRadius: 20,
           backgroundColor: Colors.white,
-          shadowColor: Colors.black,
-          shadowOffset: {
-            width: 0,
-            height: 0
-          },
-          shadowOpacity: 0.58,
-          shadowRadius: 36.00,
-          elevation: 24,
+          // shadowColor: Colors.black,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 0
+          // },
+          // shadowOpacity: 0.58,
+          // shadowRadius: 36.00,
+          // elevation: 20,
           borderTopWidth: 0,
         },
         tabBarShowLabel: false,

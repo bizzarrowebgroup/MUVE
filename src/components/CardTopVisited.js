@@ -3,29 +3,30 @@ import { View, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import Colors from '../constants/Colors'
 import { GilroyBold, GilroyRegular } from '../components/StyledText'
 import Icon from './Icon'
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 // import * as WebBrowser from 'expo-web-browser';
 const styles = StyleSheet.create({
     card: {
-        width: 205,
-        height: 245,
+        // width: wp(35), // 205
+        // height: hp(24.5), // 245
         backgroundColor: Colors.purewhite,
         marginRight: 15,
         borderRadius: 10,
+        width: wp(50),
     },
     boxed: {
-        alignSelf: "center",
-        marginTop: 15,
-        flex: 1,
+        margin: 10,
     },
     image: {
-        width: 174,
-        height: 113,
-        borderRadius: 8
+        borderRadius: 8,
+        width: "100%",
+        height: 95
     },
     titolo: {
         marginTop: 15,
-        fontSize: 16,
-        maxWidth: 150,
     }
 })
 
@@ -42,18 +43,26 @@ const CardTopVisited = ({
                 <View style={styles.boxed}>
                     <Image source={{ uri: params.mainimage }} style={styles.image} />
                 </View>
-                <View style={{ flex: 1, marginLeft: 15, flexDirection: "column", justifyContent: "space-evenly", alignContent: "flex-start", alignItems: "flex-start" }}>
+                <View style={{
+                    // backgroundColor: "red",
+                    margin: 10,
+                }}>
                     <GilroyBold style={styles.titolo}>{params.titolo}</GilroyBold>
-                    <View style={{ flexDirection: "row", maxWidth: 150, alignContent: "center", alignItems: "center", justifyContent: "center", }}>
+                    <View style={{
+                        flexDirection: "row",
+                        alignContent: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        // backgroundColor: "pink"
+                    }}>
                         <Icon name="location-pin" size={20} color={Colors.black} type="entypo" />
-                        <GilroyRegular style={{ marginLeft: 5, fontSize: 13 }}>{params.indirizzo}</GilroyRegular>
+                        <GilroyRegular variant="small" style={{ marginLeft: 5, }}>{params.indirizzo}</GilroyRegular>
                     </View>
                 </View>
             </View>
         </TouchableOpacity>
     )
 }
-
 
 export default CardTopVisited
 

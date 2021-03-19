@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, Animated, Image, View, SafeAreaView } from 'react-native';
-// import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState } from 'react';
+import { TouchableOpacity, Image, View, SafeAreaView } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../constants/Colors';
 import { window } from '../constants/Layout';
 import { GilroyRegular, GilroyBold } from '../components/StyledText';
@@ -35,7 +35,7 @@ const WelcomeScreen = ({
     }
     return (
         <>
-            {/* <LinearGradient
+            <LinearGradient
                 colors={["#316c60", "#316c60", "#5b8f85", "#316c60", "#316c60"]}
                 style={{
                     position: 'absolute',
@@ -45,8 +45,8 @@ const WelcomeScreen = ({
                     height: window.height,
                     zIndex: -1
                 }}
-            /> */}
-            <SafeAreaView style={{ flex: 1, backgroundColor: "#316c60" }}>
+            />
+            <SafeAreaView style={{ flex: 1, backgroundColor: "transparent" }}>
                 <Swiper
                     dotStyle={{ backgroundColor: Colors.black, borderRadius: 0, width: 10, height: 10, top: 3, marginLeft: 9 }}
                     autoplay={true}
@@ -95,7 +95,7 @@ const WelcomeScreen = ({
                                     source={source.image}
                                 />
                                 <View style={{ alignSelf: "center", marginVertical: 40, paddingHorizontal: 80 }}>
-                                    <GilroyRegular style={{ fontSize: 22, color: Colors.purewhite, textAlign: "center" }}>
+                                    <GilroyRegular style={{ color: Colors.purewhite, textAlign: "center" }}>
                                         {source.text}
                                     </GilroyRegular>
                                 </View>
@@ -105,7 +105,7 @@ const WelcomeScreen = ({
                 </Swiper>
             </SafeAreaView>
             <TouchableOpacity style={{ position: "absolute", bottom: 80, alignSelf: "center" }} onPress={pressEdSalta}>
-                <GilroyBold style={{ fontSize: 18, color: Colors.purewhite }}>Salta</GilroyBold>
+                <GilroyBold style={{ color: Colors.purewhite }}>Salta</GilroyBold>
             </TouchableOpacity>
         </>
     )

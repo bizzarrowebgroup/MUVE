@@ -15,7 +15,7 @@ const OptionButton = ({ icon, label, onPress, iconColor }) => {
           <Ionicons style={{ alignSelf: 'center' }} name={icon} size={25} color={iconColor ? iconColor : "rgba(0,0,0,0.35)"} />
         </View>
         <View style={styles.optionTextContainer}>
-          <GilroyRegular style={styles.optionText}>{label}</GilroyRegular>
+          <GilroyRegular variant="normal" style={styles.optionText}>{label}</GilroyRegular>
         </View>
         <View style={{ position: "absolute", right: 5 }}>
           <Icon type="SimpleLineIcons" name={"arrow-right"} size={20} color={"black"} />
@@ -34,7 +34,7 @@ const LinksScreen = ({
   return (
     <View style={styles.container}>
       <View style={[styles.contentContainer, { backgroundColor: Colors.purewhite, height: 100, flexDirection: "column", alignItems: "center", alignContent: "center", justifyContent: "center" }]}>
-        <GilroyBold style={{ color: Colors.green, fontSize: 19 }}>Impostazioni</GilroyBold>
+        <GilroyBold style={{ color: Colors.green }}>Impostazioni</GilroyBold>
         {/* <Text>Modifica</Text> */}
         {/* <Text>Nome persona loggata</Text> */}
       </View>
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
   },
   optionText: {
-    fontSize: 18.5,
     letterSpacing: 0.4,
     alignSelf: 'flex-start',
     color: Colors.black

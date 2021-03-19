@@ -52,12 +52,21 @@ const MainNavigator = () => {
                     headerShown: false
                 }} /> */}
                 <Stack.Screen name="Login" component={LoginScreen} options={{
-                    ...TransitionPresets.ModalPresentationIOS,
+                    ...TransitionPresets.ModalTransition,
                     header: undefined,
                     cardOverlayEnabled: true,
                     gestureEnabled: false,
                     headerStatusBarHeight: 0,
-                    headerShown: false
+                    headerShown: false,
+                    cardStyle: {
+                        backgroundColor: 'transparent',
+                        opacity: 1,
+                    },
+                    transitionConfig: () => ({
+                        containerStyle: {
+                            backgroundColor: 'transparent',
+                        }
+                    }),
                 }} />
                 <Stack.Screen name="Root" component={BottomTabNavigator} options={{
                     headerShown: false,

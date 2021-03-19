@@ -27,15 +27,16 @@ const Header = ({
         }
     }
     return (
-        <BlurView
+        <View
             blurType="light"
             blurAmount={100}
-            style={[styles.container]}>
+            style={[styles.container]}
+        >
             <GTSuper style={styles.headerText}>{title}</GTSuper>
             <TouchableOpacity onPress={navigate}>
-                <Icon color={Colors.grey} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} />
+                <Icon color={Colors.white} type="SimpleLineIcons" name="map" size={30} style={{ bottom: 10, paddingRight: 20 }} />
             </TouchableOpacity>
-        </BlurView>
+        </View>
     )
 };
 const styles = StyleSheet.create({
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         left: 0,
         right: 0,
+        backgroundColor: "darkgrey",
         // borderRadius: 20,
         flexDirection: "row",
         alignContent: "center",
@@ -51,7 +53,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     headerText: {
-        fontSize: 37,
         color: Colors.green,
         marginLeft: 35,
         paddingBottom: 20

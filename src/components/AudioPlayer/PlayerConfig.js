@@ -7,10 +7,10 @@ import TrackPlayer, { useTrackPlayerEvents } from "react-native-track-player";
 //Player config
 export const setup = async () => {
   await TrackPlayer.setupPlayer({
-    // iosCategoryOptions: [
-    //   "allowBluetooth": false,
-    //   "allowAirPlay": false
-    // ],
+    iosCategoryOptions: [
+      "allowBluetooth",
+      "allowAirPlay"
+    ],
     iosCategoryMode: "spokenAudio"
   });
   await TrackPlayer.updateOptions({

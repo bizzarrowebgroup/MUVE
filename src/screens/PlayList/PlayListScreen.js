@@ -51,6 +51,7 @@ const PlayListScreen = ({ navigation }) => {
                     tracks={album.tracks}
                     offsetY={offsetY}
                     onScroll={onScroll}
+                    onTogglePlayback={(track) => togglePlayback(playbackState, track)}
                 />
                 {/* <View style={{ position: "absolute", bottom: 100 }}>
                     <Text style={{ color: "white" }}>Audio Status: {playStatus(playbackState)}</Text>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, ScrollView, Image, Text, View } from 'react-native';
 import { Colors } from '../constants';
 import { fetchInfoMuseo } from '../constants/Api';
-import { GTSuper } from './StyledText';
+import { GilroyBold, GilroyRegular, GTSuper } from './StyledText';
 import Icon from './Icon';
 import { useNavigation } from '@react-navigation/native';
 import Button from './Button';
@@ -80,41 +80,37 @@ const MusemModal = ({ route }) => {
                     marginVertical: 30,
                     marginHorizontal: 30
                 }}>
-                    {museo && <Text style={{
-                        fontFamily: "GTSuperDisplay-Medium",
-                        fontSize: 30,
+                    {museo && <GTSuper style={{
                         textAlign: "left",
                         maxWidth: 290
                     }}>
                         {museo.titolo}
-                    </Text>}
-                    {museoinfo && museoinfo.description && (<>
-                        <Text style={{
-                            fontFamily: "Gilroy-Regular",
-                            fontSize: 17,
-                            textAlign: "left",
-                            marginTop: 20
-                        }} numberOfLines={textShown === 2 ? undefined : 3}>
-                            {museoinfo.description}
-                        </Text>
-                        <Text
-                            onPress={() => toggleNumberOfLines(2)}
-                            style={{ color: Colors.green, fontFamily: "Gilroy-Regular", fontSize: 17 }}>
-                            {textShown === 2 ? 'leggi di meno...' : 'leggi di più...'}
-                        </Text></>
+                    </GTSuper>}
+                    {museoinfo && museoinfo.description && (
+                        <>
+                            <GilroyRegular variant="small" style={{
+                                textAlign: "left",
+                                marginTop: 20
+                            }} numberOfLines={textShown === 2 ? undefined : 3}>
+                                {museoinfo.description}
+                            </GilroyRegular>
+                            <GilroyRegular
+                                onPress={() => toggleNumberOfLines(2)}
+                                style={{ color: Colors.green, }}>
+                                {textShown === 2 ? 'leggi di meno...' : 'leggi di più...'}
+                            </GilroyRegular>
+                        </>
                     )}
                     <View style={{
                         marginVertical: 40
                     }}>
                         <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", alignContent: "center" }}>
                             <Image source={require('../assets/images/map-preview.jpg')} style={{ borderRadius: 10, width: 50, height: 50 }} />
-                            <Text style={{
-                                fontFamily: "Gilroy-Regular",
+                            <GilroyRegular style={{
                                 maxWidth: 190,
                                 marginLeft: 20,
-                                fontSize: 17,
                                 color: Colors.black
-                            }}>{museo.indirizzo}</Text>
+                            }}>{museo.indirizzo}</GilroyRegular>
                         </View>
                         <View style={{
                             marginVertical: 20
@@ -132,17 +128,13 @@ const MusemModal = ({ route }) => {
                                     <Icon name="calendar" color={Colors.green} size={30} style={{ top: 2.5, }} />
                                 </View>
                                 <View style={{ marginLeft: 20, flexDirection: "column", justifyContent: "space-between", alignContent: "center", alignItems: "flex-start" }}>
-                                    <Text style={{
-                                        fontFamily: "Gilroy-Regular",
-                                        fontSize: 17,
+                                    <GilroyRegular style={{
                                         marginBottom: 2.5,
                                         color: Colors.lightgreen
-                                    }}>{"Oggi aperto"}</Text>
-                                    <Text style={{
-                                        fontFamily: "Gilroy-Regular",
-                                        fontSize: 13,
+                                    }}>{"Oggi aperto"}</GilroyRegular>
+                                    <GilroyRegular variant="small" style={{
                                         color: Colors.grey
-                                    }}>{"O9.30 - 18.30"}</Text>
+                                    }}>{"O9.30 - 18.30"}</GilroyRegular>
                                     {/* <Text style={{
                                         fontFamily: "Gilroy-Bold",
                                         fontSize: 20,
@@ -156,9 +148,9 @@ const MusemModal = ({ route }) => {
                 </View>
             </ScrollView>
             <Button style={{ marginHorizontal: 30, bottom: 30, backgroundColor: Colors.yellow, height: 70, borderRadius: 10 }}>
-                <Text style={{ color: Colors.black, fontFamily: "Gilroy-Bold", paddingTop: 10, fontSize: 20, letterSpacing: 1.1 }}>Acquista Biglietti</Text>
+                <GilroyBold style={{ color: Colors.black, fontSize: 20, letterSpacing: 1.1 }}>{"Acquista Biglietti"}</GilroyBold>
             </Button>
-        </View >
+        </View>
     )
 };
 

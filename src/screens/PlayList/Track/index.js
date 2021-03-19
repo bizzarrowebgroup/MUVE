@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import HTML from "react-native-render-html";
 import PlayIcon from '../../../assets/images/Play.svg'
 import { GilroyBold, GilroyRegular } from '../../../components/StyledText';
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
         height: 60
     },
 })
-export const Track = ({ track, artist, index }) => {
+export const Track = ({ track, artist, index, onTogglePlayback }) => {
     return (
         <>
             <View style={styles.row}>
@@ -46,9 +46,9 @@ export const Track = ({ track, artist, index }) => {
                     <GilroyBold style={styles.name}>{track.title}</GilroyBold>
                     <GilroyRegular style={styles.artist}>{track.artist || artist}</GilroyRegular>
                 </View>
-                <View style={styles.cell}>
+                <TouchableOpacity style={styles.cell} onPress={() => onTogglePlayback(track)}>
                     <PlayIcon color={'white'} width={24} height={24} />
-                </View>
+                </TouchableOpacity>
             </View>
             {/* <HTML
                 source={{ html: track.description }}

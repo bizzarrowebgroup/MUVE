@@ -28,9 +28,9 @@ const HomeMusemsTopVisitedCards = ({ navigation }) => {
         <>
             <View style={{ marginLeft: 38, marginTop: 30, marginRight: 30 }}>
                 <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", alignContent: "center" }}>
-                    <GilroyBold style={{ fontSize: 22, color: Colors.green }}>Più visitati</GilroyBold>
+                    <GilroyBold style={{ color: Colors.green }}>Più visitati</GilroyBold>
                     <TouchableOpacity onPress={() => navigation.navigate('Musei')}>
-                        <GilroyRegular style={{ fontSize: 15, color: Colors.grey }}>Mostra tutti</GilroyRegular>
+                        <GilroyRegular style={{ color: Colors.grey }}>Mostra tutti</GilroyRegular>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -38,15 +38,17 @@ const HomeMusemsTopVisitedCards = ({ navigation }) => {
                 {loading && (
                     <ActivityIndicator size="large" color={Colors.black} style={{ alignSelf: "center" }} />
                 )}
-                {!loading && (<FlatList
-                    horizontal
-                    data={musei}
-                    showsHorizontalScrollIndicator={false}
-                    keyExtractor={item => String(item.id)} //tba string to number maybe?
-                    renderItem={({ item }) => <CardTopVisited params={item} navigation={navigation} />}
-                    contentContainerStyle={{ marginLeft: 38 }}
-                    contentInsetAdjustmentBehavior="scrollableAxes"
-                />)}
+                {!loading && (
+                    <FlatList
+                        horizontal
+                        data={musei}
+                        showsHorizontalScrollIndicator={false}
+                        keyExtractor={item => String(item.id)} //tba string to number maybe?
+                        renderItem={({ item }) => <CardTopVisited params={item} navigation={navigation} />}
+                        contentContainerStyle={{ marginHorizontal: 38, paddingRight: 50 }}
+                        contentInsetAdjustmentBehavior="scrollableAxes"
+                    />
+                )}
             </View>
         </>
     )

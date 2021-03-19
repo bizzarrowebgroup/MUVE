@@ -51,6 +51,7 @@ export const Content = ({
     tracks = undefined,
     onScroll = () => { },
     offsetY = Animated.SharedValue(0),
+    onTogglePlayback
 }) => {
     const animatedOpacity = useAnimatedStyle(() => ({
         opacity: interpolate(
@@ -93,7 +94,7 @@ export const Content = ({
                 </Animated.View>
                 <View style={styles.tracks}>
                     {tracks.map((track, key) => (
-                        <Track index={key + 1} {...{ artist, key, track }} />
+                        <Track index={key + 1} {...{ artist, key, track, onTogglePlayback }} />
                     ))}
                 </View>
             </>

@@ -12,6 +12,7 @@ import { Colors } from '../constants';
 import { fetchMusei } from '../constants/Api';
 import _ from "lodash";
 import { window } from '../constants/Layout';
+import { GilroyRegular } from '../components/StyledText';
 
 
 const FirstRoute = () => {
@@ -266,9 +267,9 @@ const MuseiScreen = ({ navigation }) => {
                 break;
         }
         return (
-            <Text style={{ color: coloreTesto, fontSize: 15, fontFamily: 'Gilroy-Regular' }}>
+            <GilroyRegular variant="small" style={{ color: coloreTesto, }}>
                 {route.title}
-            </Text>
+            </GilroyRegular>
         )
     };
 
