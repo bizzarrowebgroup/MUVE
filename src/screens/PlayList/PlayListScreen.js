@@ -58,7 +58,7 @@ const PlayListScreen = ({ navigation }) => {
                 <BottomTab
                     onNext={playNext}
                     onPrevious={playPrevious}
-                    onTogglePlayback={() => togglePlayback(playbackState)}
+                    onTogglePlayback={() => togglePlayback(playbackState, album.tracks)}
                 />
             </View>
         </SceneContainer>

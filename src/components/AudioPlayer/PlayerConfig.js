@@ -1,8 +1,8 @@
 import TrackPlayer, { useTrackPlayerEvents } from "react-native-track-player";
 
 //Dummy Data
-import localTrack from '../../data/localTrack'
-import playlistData from "../../data/playlist.json";
+// import localTrack from '../../data/localTrack'
+// import playlistData from "../../data/playlist.json";
 
 //Player config
 export const setup = async () => {
@@ -32,13 +32,13 @@ export const setup = async () => {
 }
 
 //Add Songs or Playback existing songs
-export const togglePlayback = async (playbackState) => {
+export const togglePlayback = async (playbackState, playlistData) => {
   const currentTrack = await TrackPlayer.getCurrentTrack();
 
   if (currentTrack == null) {
     await TrackPlayer.reset();
-    await TrackPlayer.add(playlistData);
-    await TrackPlayer.add(localTrack);
+    if (playlistData) await TrackPlayer.add(playlistData);
+    // await TrackPlayer.add(localTrack);
     await TrackPlayer.play();
   }
   else {
