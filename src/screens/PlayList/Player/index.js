@@ -59,7 +59,9 @@ export const styles = StyleSheet.create({
         borderRadius: 2,
         height: 4,
         marginVertical: 16,
-        width: width - 32,
+        // width: width - 32,
+        width: "100%",
+        flexDirection: "row"
     },
     song: {
         color: 'white',
@@ -81,9 +83,10 @@ const Player = ({
         artist: "Artist name"
     },
     onPrevious,
-    onNext
+    onNext,
+    progress
 }) => {
-    const examplePress = () => console.log("pressed")
+    // const examplePress = () => console.log("pressed")
     return (
         <SafeAreaView style={styles.root}>
             <LinearGradient
@@ -110,7 +113,15 @@ const Player = ({
                         <GilroyRegular style={styles.artist}>{currentSong.artist}</GilroyRegular>
                     </View>
                 </View>
-                <View style={styles.slider} />
+                <View style={styles.slider}>
+                    <View style={{ flex: progress.position, backgroundColor: "orange" }} />
+                    <View
+                        style={{
+                            flex: progress.duration - progress.position,
+                            backgroundColor: "grey"
+                        }}
+                    />
+                </View>
                 <View style={styles.controls}>
                     {/* <TouchableOpacity onPress={examplePress}>
                         <ShuffleIcon />

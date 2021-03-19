@@ -40,6 +40,12 @@ const styles = StyleSheet.create({
     songName: {
         color: 'white',
     },
+    slider: {
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        height: 4,
+        width: "100%",
+        flexDirection: "row"
+    }
 })
 
 export const MiniPlayer = ({
@@ -51,7 +57,8 @@ export const MiniPlayer = ({
         artist: "Artist name"
     },
     onTogglePlayback,
-    middleButtonState,// Play / Pause
+    middleButtonState, // Play / Pause
+    progress
 }) => {
 
     const animatedMinimizedPlayerStyle = useAnimatedStyle(() => ({
@@ -69,21 +76,32 @@ export const MiniPlayer = ({
 
     return (
         <Animated.View style={animatedMinimizedPlayerStyle}>
-            <TouchableWithoutFeedback onPress={onPress}>
-                <View style={styles.container}>
-                    <View style={styles.imageContainer}>
-                        <Image style={styles.image} source={{ uri: currentSong.image }} />
-                    </View>
-                    <View style={styles.songInfoContainer}>
-                        <GilroyBold style={styles.songName}>{currentSong.album}</GilroyBold>
-                        <GilroyRegular style={styles.artistName}>{currentSong.artist}</GilroyRegular>
-                    </View>
-                    <TouchableOpacity style={styles.playContainer} onPress={onTogglePlayback}>
-                        {middleButtonState === "Play" && (<PlayIcon color={'white'} width={24} height={24} />)}
-                        {middleButtonState === "Pause" && (<StopIcon color={'white'} width={24} height={24} />)}
-                    </TouchableOpacity>
+            <>
+                <View style={styles.slider}>
+                    <View style={{ flex: progress.position, backgroundColor: "orange" }} />
+                    <View
+                        style={{
+                            flex: progress.duration - progress.position,
+                            backgroundColor: "grey"
+                        }}
+                    />
                 </View>
-            </TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={onPress}>
+                    <View style={styles.container}>
+                        <View style={styles.imageContainer}>
+                            <Image style={styles.image} source={{ uri: currentSong.image }} />
+                        </View>
+                        <View style={styles.songInfoContainer}>
+                            <GilroyBold style={styles.songName}>{currentSong.album}</GilroyBold>
+                            <GilroyRegular style={styles.artistName}>{currentSong.artist}</GilroyRegular>
+                        </View>
+                        <TouchableOpacity style={styles.playContainer} onPress={onTogglePlayback}>
+                            {middleButtonState === "Play" && (<PlayIcon color={'white'} width={24} height={24} />)}
+                            {middleButtonState === "Pause" && (<StopIcon color={'white'} width={24} height={24} />)}
+                        </TouchableOpacity>
+                    </View>
+                </TouchableWithoutFeedback>
+            </>
         </Animated.View>
     )
 }

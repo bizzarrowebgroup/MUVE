@@ -20,7 +20,7 @@ import { clamp, snapPoint } from 'react-native-redash'
 // import Library from '../../../assets/images/Library.svg'
 // import TabIcon from '../TabIcon'
 
-import TrackPlayer, { usePlaybackState } from "react-native-track-player";
+import TrackPlayer, { usePlaybackState, useTrackPlayerProgress } from "react-native-track-player";
 import { trackChanged } from "../../../components/AudioPlayer/PlayerConfig";
 
 import { MiniPlayer } from '../MiniPlayer'
@@ -105,6 +105,7 @@ export const BottomTab = ({ onNext, onPrevious, onTogglePlayback }) => {
         } else setMiddle("Play")
     }, [playbackState])
 
+    const progress = useTrackPlayerProgress();
     return (
         <>
             <PanGestureHandler onGestureEvent={gestureHandler}>
@@ -120,6 +121,7 @@ export const BottomTab = ({ onNext, onPrevious, onTogglePlayback }) => {
                         }}
                         onNext={onNext}
                         onPrevious={onPrevious}
+                        progress={progress}
                     />
                     <PlayerOverlay translateY={translateY} />
                     <MiniPlayer
@@ -132,6 +134,7 @@ export const BottomTab = ({ onNext, onPrevious, onTogglePlayback }) => {
                             album: trackTitle,
                             artist: trackArtist
                         }}
+                        progress={progress}
                     />
                 </Animated.View>
             </PanGestureHandler>
