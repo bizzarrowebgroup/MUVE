@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, View, ViewPropTypes} from "react-native";
 import PropTypes from "prop-types";
 
-import TrackPlayer, { usePlaybackState, useTrackPlayerEvents } from "react-native-track-player";
+import TrackPlayer, { usePlaybackState } from "react-native-track-player";
+import { trackChanged } from "./PlayerConfig";
 
 //Components
 import ControlButton from "./ControlButton";
@@ -13,28 +14,21 @@ import ProgressBar from "./ProgressBar";
 const Player = (props) =>
 {
   
+  const { style, onNext, onPrevious, onTogglePlayback } = props;
+
   const playbackState = usePlaybackState();
   const [trackTitle, setTrackTitle] = useState("");
   const [trackArtwork, setTrackArtwork] = useState();
   const [trackArtist, setTrackArtist] = useState("");
-  useTrackPlayerEvents(["playback-track-changed"], async event => {
-    if (event.type === TrackPlayer.TrackPlayerEvents.PLAYBACK_TRACK_CHANGED) {
-      const track = await TrackPlayer.getTrack(event.nextTrack);
-      const { title, artist, artwork } = track || {};
-      setTrackTitle(title);
-      setTrackArtist(artist);
-      setTrackArtwork(artwork);
-    }
-  });
 
-  const { style, onNext, onPrevious, onTogglePlayback } = props;
+  
 
-  var middleButtonText = "Play";
+  trackChanged(setTrackTitle, setTrackArtist, setTrackArtwork)
 
-  if (
-    playbackState === TrackPlayer.STATE_PLAYING ||
-    playbackState === TrackPlayer.STATE_BUFFERING
-  ) {
+
+  let middleButtonText = "Play";
+  if (playbackState === TrackPlayer.STATE_PLAYING || playbackState === TrackPlayer.STATE_BUFFERING) 
+  {
     middleButtonText = "Pause";
   }
 
@@ -45,9 +39,9 @@ const Player = (props) =>
       <Text style={styles.title}>{trackTitle}</Text>
       <Text style={styles.artist}>{trackArtist}</Text>
       <View style={styles.controls}>
-        <ControlButton title={"<<"} onPress={onPrevious} />
+        <ControlButton title={"Previous"} onPress={onPrevious} />
         <ControlButton title={middleButtonText} onPress={onTogglePlayback} />
-        <ControlButton title={">>"} onPress={onNext} />
+        <ControlButton title="Next" onPress={onNext} />
       </View>
     </View>
   );
@@ -61,38 +55,38 @@ Player.propTypes =
   onTogglePlayback: PropTypes.func.isRequired
 };
 
-Player.defaultProps = 
-{
-  style: {}
-};
 
 const styles = StyleSheet.create({
   card: {
     width: "80%",
-    elevation: 1,
     borderRadius: 4,
+    alignItems: "center",
+    backgroundColor: "white",
+    elevation: 1,
     shadowRadius: 2,
     shadowOpacity: 0.1,
-    alignItems: "center",
     shadowColor: "black",
-    backgroundColor: "white",
     shadowOffset: { width: 0, height: 1 }
   },
   cover: {
-    width: 140,
+    width: '100%',
     height: 140,
-    marginTop: 20,
-    backgroundColor: "grey"
+    borderRadius: 4,
   },
   title: {
-    marginTop: 10
+    marginTop: 10,
+    fontSize:16,
   },
   artist: {
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontSize:20,
   },
   controls: {
     marginVertical: 20,
-    flexDirection: "row"
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: "row",
+    width:'100%'
   },
 });
 

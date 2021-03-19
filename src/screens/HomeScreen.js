@@ -25,8 +25,8 @@ const HomeScreen = ({ navigation, route }) => {
     <ScrollView showsVerticalScrollIndicator={false} style={styles.contentContainer}>
       <SearchBar navigation={navigation} />
       <Animatable.View ref={AnimationRef} easing="ease-out" useNativeDriver={true}>
-        {/* <HomeMusemsTopVisitedCards navigation={navigation} />
-        <HomeMusemsNews /> */}
+        <HomeMusemsTopVisitedCards navigation={navigation} />
+        {/* <HomeMusemsNews /> */}
       </Animatable.View>
     </ScrollView>
     <Header route={route} title={"MUVE"} navigation={navigation} />

@@ -1,8 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 
-
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
 const ControlButton = ({ 
@@ -10,9 +10,36 @@ const ControlButton = ({
     onPress = () => {} 
 }) =>
 {
+
+
+  //Player Icons
+  let playIcon
+  switch (title) 
+  {
+    case "Previous":
+      playIcon = <Icon name = "play-back" size = {30} color = "black"/>
+      break;
+
+    case "Next":
+      playIcon = <Icon name = "play-forward" size = {30} color = "black"/>
+      break;
+
+    case "Play":
+      playIcon = <Icon name = "play-circle-outline" size = {80} color = "black"/>
+      break;
+
+    case "Pause":
+      playIcon = <Icon name = "pause-circle-outline" size = {80} color = "black"/>
+      break;
+  
+    default:
+      break;
+  }
+
+
   return (
-    <TouchableOpacity style={styles.controlButtonContainer} onPress={onPress}>
-      <Text style={styles.controlButtonText}>{title}</Text>
+    <TouchableOpacity onPress={onPress}>
+      {playIcon}
     </TouchableOpacity>
   );
 }
@@ -23,16 +50,6 @@ ControlButton.propTypes =
   onPress: PropTypes.func.isRequired
 };
 
-const styles = StyleSheet.create({
-    controlButtonContainer: 
-    {
-        flex: 1
-    },
-    controlButtonText: 
-    {
-        fontSize: 18,
-        textAlign: "center"
-    }
-});
+
 
 export default ControlButton;
