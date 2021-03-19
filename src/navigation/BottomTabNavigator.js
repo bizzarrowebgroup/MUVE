@@ -5,6 +5,7 @@ import { TabBarIcon } from '../components';
 import HomeScreen from '../screens/HomeScreen';
 import MuseiScreen from '../screens/MuseiScreen';
 import LinksScreen from '../screens/LinksScreen';
+import PlaylistScreen from '../screens/PlaylistScreen';
 
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 const BottomTab = createBottomTabNavigator();
@@ -83,6 +84,14 @@ export default function BottomTabNavigator() {
         options={{
           title: 'Settings',
           tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="cog" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="PlaylistScreen"
+        component={PlaylistScreen}
+        options={{
+          title: 'PlaylistScreen',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="play-circle" />,
         }}
       />
     </BottomTab.Navigator>
